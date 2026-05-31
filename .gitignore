@@ -2,6 +2,7 @@
 .env.hidden
 .env.bak
 PUSH-TO-GITHUB.bat
+cf-token.bat
 .wrangler/
 subject_cutout.png
 node_modules/

@@ -4,11 +4,13 @@ cd /d "%~dp0"
 
 set GIT="C:\Program Files\Git\cmd\git.exe"
 
+REM Load token from local file (never committed to git)
+call "%~dp0cf-token.bat"
+
 echo Pulling latest from GitHub...
 %GIT% pull origin main
 
-echo Running deploy...
-set CLOUDFLARE_API_TOKEN=cfut_fu8jSOQrdSm6VeHBbSUckNWniyNUWFRC6etD3ltHf4fc8ea9
+echo Deploying to Cloudflare...
 call npx wrangler@4 deploy > deploy-log.txt 2>&1
 set ERR=%ERRORLEVEL%
 
