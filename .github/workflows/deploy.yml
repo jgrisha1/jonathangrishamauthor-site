@@ -1,0 +1,30 @@
+name: Deploy to Cloudflare Workers
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy to Cloudflare Workers
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: 99d1960e0d00c3b0688b0385bb625daa
+
+      - name: Verify site is up
+        run: |
+          sleep 10
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://jonathangrishamauthor.com/)
+          echo "Site returned HTTP $STATUS"
+          if [ "$STATUS" != "200" ]; then
+            echo "ERROR: Site returned $STATUS after deploy!"
+            exit 1
+          fi
+          echo "Site is up and returning 200 OK."
