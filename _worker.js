@@ -216,10 +216,11 @@ export default {
       const res = await env.ASSETS.fetch(request);
       const newRes = new Response(res.body, res);
       newRes.headers.set('X-Content-Type-Options', 'nosniff');
-      newRes.headers.set('X-Frame-Options', 'SAMEORIGIN');
+      newRes.headers.set('X-Frame-Options', 'DENY');
       newRes.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
       newRes.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
       newRes.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+      newRes.headers.set('Cross-Origin-Opener-Policy', 'same-origin');
       newRes.headers.set('Content-Security-Policy',
         "default-src 'self'; " +
         "script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https://static.cloudflareinsights.com; " +
@@ -230,10 +231,13 @@ export default {
         "frame-src https://challenges.cloudflare.com; " +
         "frame-ancestors 'none';"
       );
-      // Prevent edge caching of responses so security headers are always applied
       const ct = newRes.headers.get('Content-Type') || '';
       if (ct.includes('text/html')) {
+        // No caching for HTML so security headers are always fresh
         newRes.headers.set('Cache-Control', 'no-store');
+      } else if (ct.includes('image/') || ct.includes('font/') || ct.includes('text/css') || ct.includes('javascript')) {
+        // Long cache for immutable assets (filenames don't change, CF serves fresh on deploy)
+        newRes.headers.set('Cache-Control', 'public, max-age=31536000, immutable');
       }
       return newRes;
     }
