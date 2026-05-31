@@ -41,22 +41,22 @@ body > footer { position: relative; z-index: 1; }
   /* canvas handles ooze, CSS handles scan lines */
 }
 
-/* scan line texture overlay across the bottom half */
+/* scan line texture overlay across the bottom */
 .bfx-orangeGooSignal::after {
   content: '';
   position: absolute;
   left: 0; right: 0;
   bottom: 0;
-  height: 52vh;
+  height: 72vh;
   background: repeating-linear-gradient(
     0deg,
     rgba(0,0,0,0) 0,
     rgba(0,0,0,0) 2px,
-    rgba(249,115,22,0.035) 3px,
+    rgba(249,115,22,0.055) 3px,
     rgba(0,0,0,0) 4px
   );
   mix-blend-mode: screen;
-  animation: bfx-scan-pulse 5s ease-in-out infinite;
+  animation: bfx-scan-pulse 4s ease-in-out infinite;
   pointer-events: none;
 }
 
@@ -103,10 +103,10 @@ body > footer { position: relative; z-index: 1; }
   top: 10vh;
   right: 3.5vw;
   font-family: 'Special Elite', ui-monospace, monospace;
-  font-size: 0.58rem;
+  font-size: 0.62rem;
   letter-spacing: 0.18em;
   line-height: 1.6;
-  color: rgba(175,158,130,0.22);
+  color: rgba(175,158,130,0.38);
   text-align: right;
   text-transform: uppercase;
   z-index: 1;
@@ -142,7 +142,7 @@ body > footer { position: relative; z-index: 1; }
     color: rgba(249,115,22,0.3);
   }
   .bfx-hymn {
-    color: rgba(175,158,130,0.3);
+    color: rgba(175,158,130,0.45);
   }
 }
 
