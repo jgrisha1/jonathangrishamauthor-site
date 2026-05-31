@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kept Warm for the Mountain | Jonathan Grisham</title>
+  <meta name="description" content="Kept Warm for the Mountain by Jonathan Grisham, Extreme Horror Author. Appalachian splatterpunk body horror set in East Tennessee — regional dread, real lore, available on Kindle Unlimited." />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <link rel="canonical" href="https://jonathangrishamauthor.com/books/kept-warm-for-the-mountain" />
+  <meta property="og:title" content="Kept Warm for the Mountain | Jonathan Grisham" />
+  <meta property="og:description" content="The house already has a name for you. Appalachian horror rooted in real regional lore. The house always collects its tax." />
+  <meta property="og:image" content="https://jonathangrishamauthor.com/cover-kept-warm.png" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://jonathangrishamauthor.com/books/kept-warm-for-the-mountain" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    "name": "Kept Warm for the Mountain",
+    "author": {"@type": "Person", "name": "Jonathan Grisham", "url": "https://jonathangrishamauthor.com"},
+    "bookFormat": "https://schema.org/EBook",
+    "numberOfPages": 256,
+    "inLanguage": "en",
+    "datePublished": "2026-03-15",
+    "genre": "Extreme Horror",
+    "description": "A house can be broken. A house can be hungry. Appalachian horror rooted in real regional lore.",
+    "image": "https://jonathangrishamauthor.com/cover-kept-warm.png",
+    "url": "https://jonathangrishamauthor.com/books/kept-warm-for-the-mountain",
+    "offers": {"@type": "Offer", "url": "https://www.amazon.com/dp/B0GX7LYMM5?tag=220500b-20", "priceCurrency": "USD", "availability": "https://schema.org/InStock"}
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cinzel:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=IM+Fell+English:ital@0;1&family=Special+Elite&display=swap" />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    :root {
+      --kw-bg:    #030804;
+      --kw-panel: #060e05;
+      --kw-bdr:   rgba(42,80,28,0.28);
+      --kw-moss:  #3a5c22;
+      --kw-bright:#527a30;
+      --kw-earth: #4a2e10;
+      --kw-fog:   #7a8e72;
+      --kw-bark:  #1e1408;
+      --kw-text:  #c0cc9a;
+      --kw-muted: #627050;
+    }
+    body {
+      background-color: var(--kw-bg);
+      background-image:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(20,40,10,0.7) 0%, transparent 70%),
+        repeating-linear-gradient(
+          175deg,
+          transparent 0, transparent 18px,
+          rgba(30,20,8,0.18) 18px, rgba(30,20,8,0.18) 20px
+        );
+    }
+    body::after {
+      content:'';position:fixed;inset:0;
+      background:
+        radial-gradient(ellipse 100% 40% at 50% 100%, rgba(10,25,5,0.6) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 30% at 20% 50%, rgba(42,80,28,0.06) 0%, transparent 60%);
+      pointer-events:none;z-index:9997;
+    }
+    @keyframes fog-drift {
+      0%,100%{transform:translateX(0) scaleX(1);opacity:.06}
+      50%{transform:translateX(18px) scaleX(1.04);opacity:.1}
+    }
+    .fog-overlay {
+      position:fixed;inset:0;pointer-events:none;z-index:9996;
+      background:repeating-linear-gradient(
+        180deg,
+        rgba(120,140,100,0.035) 0, rgba(120,140,100,0.035) 1px,
+        transparent 1px, transparent 80px
+      );
+      animation:fog-drift 18s ease-in-out infinite;
+    }
+    .book-page-title{color:var(--kw-bright)}
+    .label{color:var(--kw-moss)}
+    .bleeder{border-color:rgba(42,80,28,.3)}
+    .btn-blood{background:var(--kw-earth);border-color:var(--kw-moss);color:var(--kw-text)}
+    .btn-blood:hover{background:var(--kw-moss);color:#fff}
+    .mark.lit{background:var(--kw-bright);box-shadow:0 0 6px var(--kw-moss)}
+    .tag{border-color:var(--kw-bdr);color:var(--kw-text)}
+    .meta-row{border-color:var(--kw-bdr)}
+    .book-page-meta{border-color:var(--kw-bdr)}
+    .book-page-synopsis h2,.themes-block h2{color:var(--kw-bright)}
+    .book-page-synopsis p{color:var(--kw-text)}
+    /* Bark-grain texture bar */
+    .kw-root {
+      height:6px;
+      background:repeating-linear-gradient(
+        90deg,
+        var(--kw-bark) 0,var(--kw-bark) 12px,
+        rgba(42,80,28,.15) 12px,rgba(42,80,28,.15) 14px,
+        var(--kw-bark) 14px,var(--kw-bark) 28px,
+        rgba(74,46,16,.25) 28px,rgba(74,46,16,.25) 32px
+      );
+      margin:1.4rem 0;opacity:.7;border-radius:1px;
+    }
+    /* Lore callout block */
+    .kw-lore {
+      margin-top:2.2rem;
+      border:1px solid var(--kw-bdr);
+      border-left:3px solid var(--kw-moss);
+      background:rgba(6,14,5,.8);
+      padding:1.3rem 1.5rem;
+      border-radius:3px;
+      position:relative;
+    }
+    .kw-lore::before{
+      content:'// FIELD NOTE';
+      font-family:'Special Elite',monospace;font-size:.5rem;letter-spacing:.28em;
+      color:var(--kw-moss);position:absolute;top:-.58rem;left:1rem;
+      background:var(--kw-bg);padding:0 .4rem;
+    }
+    .kw-lore p{
+      font-family:'IM Fell English',serif;font-style:italic;
+      font-size:.95rem;line-height:1.65;color:var(--kw-fog);margin:0;
+    }
+    /* ACCORDION */
+    .cw-wrap{margin-top:1.6rem;border:1px solid var(--kw-bdr);border-radius:3px;overflow:hidden}
+    .cw-btn{width:100%;background:rgba(6,14,5,.9);border:none;padding:.85rem 1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:space-between;font-family:'Special Elite',monospace;font-size:.6rem;letter-spacing:.24em;color:var(--kw-moss);text-transform:uppercase;text-align:left;transition:background .2s}
+    .cw-btn:hover{background:rgba(42,80,28,.08)}
+    .cw-arr{transition:transform .3s;color:var(--kw-muted);font-style:normal}
+    .cw-btn[aria-expanded="true"] .cw-arr{transform:rotate(180deg)}
+    .cw-body{max-height:0;overflow:hidden;transition:max-height .35s ease;background:rgba(3,8,4,.98)}
+    .cw-body.open{max-height:300px}
+    .cw-inner{padding:.9rem 1.1rem 1.2rem;display:flex;flex-wrap:wrap;gap:.42rem}
+    .cw-tag{font-family:'Special Elite',monospace;font-size:.57rem;letter-spacing:.12em;text-transform:uppercase;color:var(--kw-muted);border:1px solid rgba(42,80,28,.2);padding:.24rem .6rem;border-radius:2px;background:rgba(0,0,0,.4)}
+    /* REACTIONS */
+    .react-wrap{margin-top:2.5rem}
+    .react-wrap h2{font-family:'Special Elite',monospace;font-size:.64rem;letter-spacing:.28em;text-transform:uppercase;color:var(--kw-moss);margin-bottom:1.1rem}
+    .react-grid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+    @media(max-width:600px){.react-grid{grid-template-columns:1fr}}
+    .r-card{background:rgba(6,14,5,.8);border:1px solid rgba(42,80,28,.14);border-left:2px solid var(--kw-moss);padding:1rem 1.1rem;border-radius:2px}
+    .r-q{font-family:'IM Fell English',serif;font-style:italic;font-size:.9rem;line-height:1.55;color:var(--kw-text);margin-bottom:.5rem}
+    .r-src{font-family:'Special Elite',monospace;font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--kw-muted)}
+  </style>
+</head>
+<body>
+  <div class="fog-overlay" aria-hidden="true"></div>
+
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a href="/" style="text-decoration:none;">
+        <div class="brand-wrap">
+          <div class="brand-name">Jonathan Grisham</div>
+          <span class="brand-sub">East Tennessee</span>
+        </div>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="../index.html#books">Books</a>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#music">Music</a>
+        <a href="../index.html#signed">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span>/</span>
+        <a href="../index.html#books">Books</a><span>/</span>
+        Kept Warm for the Mountain
+      </nav>
+
+      <div class="book-page-grid">
+        <aside class="book-page-cover">
+          <img src="../cover-kept-warm.png" alt="Kept Warm for the Mountain by Jonathan Grisham — Appalachian Splatterpunk" width="340" height="510" />
+          <div class="book-page-meta">
+            <div class="meta-row"><span class="meta-key">Author</span><span class="meta-val">Jonathan Grisham</span></div>
+            <div class="meta-row"><span class="meta-key">Genre</span><span class="meta-val">Appalachian Horror</span></div>
+            <div class="meta-row"><span class="meta-key">Format</span><span class="meta-val">eBook / Paperback</span></div>
+            <div class="meta-row"><span class="meta-key">Published</span><span class="meta-val">March 15, 2026</span></div>
+            <div class="meta-row"><span class="meta-key">Pages</span><span class="meta-val">256</span></div>
+          </div>
+          <div class="severity-row" style="margin-top:1rem;">
+            <span class="severity-label">Content Severity</span>
+            <div class="severity-marks" aria-label="Severity 3 of 4">
+              <span class="mark lit"></span><span class="mark lit"></span><span class="mark lit"></span><span class="mark"></span>
+            </div>
+          </div>
+          <div class="buy-stack">
+            <a class="btn btn-blood" href="https://www.amazon.com/dp/B0GX7LYMM5?tag=220500b-20" target="_blank" rel="noreferrer">Buy on Amazon</a>
+            <span class="ku-note">Available on Kindle Unlimited</span>
+            <a class="btn btn-ghost" href="https://www.amazon.com/dp/B0GX7LYMM5#reader_B0GX7LYMM5" target="_blank" rel="noreferrer">Read Sample</a>
+            <a class="btn btn-ghost" href="../index.html#signed">Request Signed Copy</a>
+          </div>
+          <div class="cw-wrap">
+            <button class="cw-btn" aria-expanded="false" aria-controls="cw-kw"
+              onclick="this.setAttribute('aria-expanded',this.getAttribute('aria-expanded')==='true'?'false':'true');document.getElementById('cw-kw').classList.toggle('open')">
+              <span>// Content Warnings</span>
+              <em class="cw-arr">&#9660;</em>
+            </button>
+            <div class="cw-body" id="cw-kw" role="region">
+              <div class="cw-inner">
+                <span class="cw-tag">Body Horror</span><span class="cw-tag">Isolation</span>
+                <span class="cw-tag">Animal Harm</span><span class="cw-tag">Graphic Violence</span>
+                <span class="cw-tag">Psychological Dread</span><span class="cw-tag">Folk Horror Rituals</span>
+                <span class="cw-tag">Death of a Child</span><span class="cw-tag">Starvation / Exposure</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <article>
+          <span class="label">Appalachian Splatterpunk &bull; Regional Horror &bull; East Tennessee</span>
+          <h1 class="book-page-title">Kept Warm for the Mountain</h1>
+          <p class="book-page-byline">Jonathan Grisham &bull; Appalachian Horror &bull; Splatterpunk Fiction</p>
+          <div class="kw-root"></div>
+
+          <div class="book-page-synopsis">
+            <h2>About the Book</h2>
+            <p>Mara Maddox has lived long enough on the Hancock-Hawkins line to trust her bones more than the weatherman. When the wrists ache before a ridge-storm and the dogs stop asking to be let out and start watching the gaps between the trees, you learn not to name what you're feeling. Naming gives it purchase.</p>
+            <p>Her husband Hollis dips two fingers into a jar of something the color of weak tea and traces a wet line along the threshold every storm season, murmuring one word into the wood: <em>Hold.</em> It doesn't sound like prayer. It sounds like instruction. Mara looks away and pretends she doesn't see the way the air around his hands thickens. This is how marriages work in the Clinch. You tolerate the things that keep the house standing.</p>
+            <p>The house on the stone piers has been patched until the patches have patches. It smells of split oak and damp cloth and last year's mouse droppings no matter how much Mara scrubs. The threshold board is worn smooth by generations of people doing what she is doing now: entering, leaving, returning, and not asking what the house does in the hours between. What it reaches for. What it pulls in under the floorboards when the cold gets bad enough and the old debt comes due again.</p>
+            <p>By the time the body horror hits, you understand it. <em>Kept Warm for the Mountain</em> is splatterpunk that earns every wet, anatomical inch of its horror with 22 chapters of Appalachian dread that soak in like ridge-water through old boards. Chapter titles: <em>Door-Trod. First Nail. Gum Tax. Inter. Mouth. Jaw. Under. Rot.</em> The house collects what it is owed. It has always collected what it is owed.</p>
+          </div>
+
+          <div class="kw-lore">
+            <p>"The front door sat slightly out of square in the frame, swollen on the bottom edge from years of wet boots and spring mud. The threshold board was worn smooth by generations. Door-trod, her granny would've called it. A word that sounded like something you did without thinking. Trod. Cross. Enter. Leave. Return."</p>
+          </div>
+
+          <div class="kw-root"></div>
+
+          <div class="themes-block">
+            <h2>Themes</h2>
+            <div class="tag-list">
+              <span class="tag">Appalachian Horror</span><span class="tag">Haunted Structure</span>
+              <span class="tag">Body Horror</span><span class="tag">Folk Tradition</span>
+              <span class="tag">Psychological Dread</span><span class="tag">Splatterpunk</span>
+              <span class="tag">Regional Lore</span><span class="tag">Claustrophobic Wilderness</span>
+            </div>
+          </div>
+
+          <div class="book-page-synopsis" style="margin-top:2.5rem;">
+            <h2>Where This Book Comes From</h2>
+            <p>Grisham lives in East Tennessee, on the kind of ridge road where the cell signal goes and stays gone and a house can swallow sound if you shout into the wrong valley. The folk practices in this novel are not invented. The threshold rituals, the sealed jars, the door-trod work Hollis does before every hard storm — these are things that real people still do in the Clinch Mountain range, and they do them not out of superstition but out of a logic the mountains taught them and the culture preserved because the alternative is worse. You learn not to stop doing the things that have worked. You learn not to name what happens when you stop.</p>
+            <p>The book descends through its chapter titles like a set of stairs going somewhere you agreed to go before you understood what was at the bottom. <em>Door-Trod. First Nail. Gum Tax.</em> Then <em>Inter. Mouth. Jaw. Under. Rot.</em> The structure chapters are what the book has been earning since page one. They are not a payoff in the way horror usually delivers a payoff. They are a reckoning. Every county in East Tennessee has a version of this story. The names change. The house changes. What the house collects does not change, and neither does the outcome for the people who stopped doing the things that kept it at bay.</p>
+          </div>
+
+          <div class="react-wrap">
+            <h2>Reader Reactions</h2>
+            <div class="react-grid">
+              <div class="r-card">
+                <p class="r-q">"This got under my skin in a way I wasn't ready for. I grew up in Appalachia. I recognize every single thing in this book."</p>
+                <span class="r-src">Amazon Review</span>
+              </div>
+              <div class="r-card">
+                <p class="r-q">"The house in this novel is the most genuinely terrifying location I've read in years. Not because of what it does. Because of how patient it is."</p>
+                <span class="r-src">Kindle Unlimited Reader</span>
+              </div>
+              <div class="r-card">
+                <p class="r-q">"Grisham writes East Tennessee the way a person who actually lives there writes it. The cold comes off the page."</p>
+                <span class="r-src">Goodreads Review</span>
+              </div>
+              <div class="r-card">
+                <p class="r-q">"I've read a lot of haunted house books. None of them made me feel like the house was reading me back."</p>
+                <span class="r-src">Reader Reaction</span>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <section class="section" style="margin-top:3rem;">
+        <div style="margin-bottom:1.8rem;">
+          <span class="label">About This Book</span>
+          <hr class="bleeder" />
+          <h2 class="h-section" style="font-size:1.9rem;">Frequently Asked Questions</h2>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:1.4rem;max-width:720px;">
+          <div style="border:1px solid var(--kw-bdr);border-left:3px solid var(--kw-moss);background:rgba(6,14,5,.8);padding:1.3rem 1.5rem;border-radius:3px;">
+            <p style="font-family:'Special Elite',monospace;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--kw-moss);margin:0 0 .6rem;">Is Kept Warm for the Mountain Appalachian horror?</p>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:1rem;line-height:1.75;color:var(--kw-text);margin:0;">Yes. <em>Kept Warm for the Mountain</em> is Appalachian horror and splatterpunk fiction rooted in East Tennessee, folk dread, haunted structures, body horror, and regional lore.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" style="margin-top:3rem;">
+        <div style="margin-bottom:1.8rem;">
+          <span class="label">More from Jonathan Grisham</span>
+          <hr class="bleeder" />
+          <h2 class="h-section" style="font-size:1.9rem;">Also Available</h2>
+        </div>
+        <div class="related-grid">
+          <a href="/books/the-devil-finds-a-home" class="related-card"><img src="../cover-devil.jpg" alt="The Devil Finds a Home" loading="lazy" /><span>The Devil Finds a Home</span></a>
+          <a href="/books/my-baby" class="related-card"><img src="../cover-my-baby.jpg" alt="My Baby" loading="lazy" /><span>My Baby</span></a>
+          <a href="/books/angels" class="related-card"><img src="../cover-angels.jpg" alt="Angels" loading="lazy" /><span>Angels</span></a>
+          <a href="/books/the-big-orange-monster-fucked-up" class="related-card"><img src="../cover-big-orange-monster.jpg" alt="The Big Orange Monster Fucked Up" loading="lazy" /><span>The Big Orange Monster Fucked Up</span></a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+        

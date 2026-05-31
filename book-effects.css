@@ -1,0 +1,161 @@
+/* ============================================================
+   book-effects.css  v3 — Extreme Horror Atmospheres
+   Decorative only. aria-hidden + pointer-events:none + z-index:-1
+   All visual work is canvas-based. CSS handles positioning + overlays.
+   ============================================================ */
+
+.bfx,
+.bfx * {
+  pointer-events: none !important;
+}
+
+.bfx {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  contain: strict;
+}
+
+/* canvas sits at the bottom of the fixed layer */
+.bfx-canvas {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  display: block;
+}
+
+/* content stays above the layer */
+body > header,
+body > main,
+body > footer { position: relative; z-index: 1; }
+
+/* ================================================================
+   ORANGE GOO SIGNAL  —  The Big Orange Monster Fucked Up
+   CRT scan lines and signal text overlay
+   ================================================================ */
+.bfx-orangeGooSignal .bfx-canvas,
+.bfx-orangeGooSignal canvas {
+  /* canvas handles ooze, CSS handles scan lines */
+}
+
+/* scan line texture overlay across the bottom half */
+.bfx-orangeGooSignal::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  bottom: 0;
+  height: 52vh;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0,0,0,0) 0,
+    rgba(0,0,0,0) 2px,
+    rgba(249,115,22,0.035) 3px,
+    rgba(0,0,0,0) 4px
+  );
+  mix-blend-mode: screen;
+  animation: bfx-scan-pulse 5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes bfx-scan-pulse {
+  0%, 100% { opacity: 0.5 }
+  50%       { opacity: 0.9 }
+}
+
+/* signal text */
+.bfx-signal {
+  position: absolute;
+  left: 50%;
+  bottom: 1.2rem;
+  transform: translateX(-50%);
+  font-family: 'Special Elite', ui-monospace, monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0);
+  text-shadow: 0 0 8px rgba(249,115,22,0.6);
+  white-space: nowrap;
+  transition: color 0.2s ease;
+  z-index: 1;
+}
+
+.bfx-signal.bfx-flicker {
+  color: rgba(249,150,70,0.75);
+  animation: bfx-glitch 0.45s steps(2) 2;
+}
+
+@keyframes bfx-glitch {
+  0%   { transform: translateX(-50%); }
+  25%  { transform: translate(-51%, 1px) skewX(0.5deg); }
+  50%  { transform: translate(-49%, -1px) skewX(-0.5deg); }
+  75%  { transform: translate(-50.5%, 0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ================================================================
+   HYMN BOARD  —  Growing Up Independent Baptist
+   ================================================================ */
+.bfx-hymn {
+  position: absolute;
+  top: 10vh;
+  right: 3.5vw;
+  font-family: 'Special Elite', ui-monospace, monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  line-height: 1.6;
+  color: rgba(175,158,130,0.22);
+  text-align: right;
+  text-transform: uppercase;
+  z-index: 1;
+}
+
+.bfx-hymn.bfx-flicker {
+  animation: bfx-hymn-flicker 0.22s steps(1) 3;
+}
+
+@keyframes bfx-hymn-flicker {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* ================================================================
+   SHARED FLICKER UTILITY
+   ================================================================ */
+.bfx-flicker {
+  animation: bfx-glitch 0.4s steps(2) 2;
+}
+
+/* ================================================================
+   PREFERS-REDUCED-MOTION
+   ================================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .bfx *,
+  .bfx::before,
+  .bfx::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .bfx-signal {
+    color: rgba(249,115,22,0.3);
+  }
+  .bfx-hymn {
+    color: rgba(175,158,130,0.3);
+  }
+}
+
+/* ================================================================
+   MOBILE
+   ================================================================ */
+@media (max-width: 640px) {
+  .bfx-hymn {
+    font-size: 0.5rem;
+    top: 8vh;
+  }
+  .bfx-signal {
+    font-size: 0.45rem;
+    letter-spacing: 0.22em;
+  }
+}

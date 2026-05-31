@@ -1,0 +1,40 @@
+name = "jonathangrishamauthor"
+account_id = "99d1960e0d00c3b0688b0385bb625daa"
+compatibility_date = "2024-01-01"
+main = "./_worker.js"
+
+[assets]
+directory = "./"
+binding = "ASSETS"
+
+# SECRETS — set in Cloudflare dashboard:
+# Workers & Pages > jonathangrishamauthor > Settings > Variables & Secrets
+# Mark every value as "Secret" (encrypted).
+#
+# REQUIRED:
+#   TURNSTILE_SECRET        = Cloudflare Turnstile secret key
+#   TO_EMAIL                = jonathan.grisham1990@gmail.com
+#   FROM_EMAIL              = forms@jonathangrishamauthor.com
+#
+# EMAIL BACKEND — set EMAIL_PROVIDER to "ses" (recommended, you have AWS)
+#                 or "resend" (fallback, free tier 3000 emails/mo)
+#
+# If EMAIL_PROVIDER = "ses":
+#   AWS_ACCESS_KEY_ID       = IAM key with ses:SendEmail on SES v2
+#   AWS_SECRET_ACCESS_KEY   = IAM secret
+#   AWS_REGION              = us-east-1
+#   NOTE: verify jonathangrisham1990@gmail.com or FROM_EMAIL domain in AWS SES first
+#
+# If EMAIL_PROVIDER = "resend":
+#   RESEND_API_KEY          = API key from resend.com
+#   NOTE: FROM_EMAIL domain must be verified in Resend
+#
+# R2 MEDIA VAULT — when ready, create bucket "jonathangrishamauthor-media"
+# in Cloudflare R2, then uncomment the block below and redeploy.
+# You have 10GB free / 1M Class A ops / 10M Class B ops per month.
+# Suggested folders: books/covers, books/press-kits, music/album-art,
+#                    media/author-photos, site/og-images
+#
+# [r2_buckets]
+# binding     = "MEDIA"
+# bucket_name = "jonathangrishamauthor-media"

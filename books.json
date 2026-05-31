@@ -1,0 +1,61 @@
+{
+  "_comment": "Source of truth for known books. The sync-books workflow checks this against Amazon PA API and adds new entries automatically. visualTheme drives the per-book atmospheric layer (book-effects.css/js).",
+  "books": [
+    {
+      "asin": "B08X186TY8",
+      "slug": "angels",
+      "title": "Angels",
+      "genre": "Occult Horror",
+      "page": "books/angels.html",
+      "visualTheme": { "type": "occultVeil", "intensity": "low", "accentColor": "#c8b4e0" }
+    },
+    {
+      "asin": "B0CM4268ZJ",
+      "slug": "growing-up-independent-baptist",
+      "title": "Growing Up Independent Baptist",
+      "genre": "Memoir / Religious Trauma",
+      "page": "books/growing-up-independent-baptist.html",
+      "visualTheme": { "type": "churchPaperTrauma", "intensity": "low", "accentColor": "#b41e19" }
+    },
+    {
+      "asin": "B0GX7LYMM5",
+      "slug": "kept-warm-for-the-mountain",
+      "title": "Kept Warm for the Mountain",
+      "genre": "Appalachian Horror",
+      "page": "books/kept-warm-for-the-mountain.html",
+      "visualTheme": { "type": "frostWindow", "intensity": "medium", "accentColor": "#aaccdd" }
+    },
+    {
+      "asin": "B0H2ZFPC94",
+      "slug": "spur",
+      "title": "SPUR",
+      "genre": "Southern Gothic Horror",
+      "page": "books/spur.html",
+      "visualTheme": { "type": "boneProtrusion", "intensity": "medium", "accentColor": "#cdc4b2" }
+    },
+    {
+      "asin": "B08X1GD18Z",
+      "slug": "my-baby",
+      "title": "My Baby",
+      "genre": "Extreme Horror",
+      "page": "books/my-baby.html",
+      "visualTheme": { "type": "nurseryRot", "intensity": "medium", "accentColor": "#b98a8a" }
+    },
+    {
+      "asin": "B08X1F45DD",
+      "slug": "the-devil-finds-a-home",
+      "title": "The Devil Finds a Home",
+      "genre": "Southern Gothic Horror",
+      "page": "books/the-devil-finds-a-home.html",
+      "visualTheme": { "type": "emberHollow", "intensity": "medium", "accentColor": "#e16e23" }
+    },
+    {
+      "asin": "B0GX2V65RZ",
+      "slug": "the-big-orange-monster-fucked-up",
+      "title": "The Big Orange Monster Fucked Up",
+      "genre": "Political Horror / Satire",
+      "page": "books/the-big-orange-monster-fucked-up.html",
+      "visualTheme": { "type": "orangeGooSignal", "intensity": "medium", "accentColor": "#f97316" }
+    }
+  ]
+}
