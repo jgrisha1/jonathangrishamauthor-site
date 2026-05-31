@@ -14,9 +14,12 @@ jobs:
 
       - name: Deploy to Cloudflare Workers
         uses: cloudflare/wrangler-action@v3
+        env:
+          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: 99d1960e0d00c3b0688b0385bb625daa
+          wranglerVersion: '4'
 
       - name: Verify site is up
         run: |
