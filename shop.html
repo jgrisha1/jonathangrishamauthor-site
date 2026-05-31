@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop | Jonathan Grisham</title>
+  <meta name="description" content="Official merch from Jonathan Grisham — extreme horror author from East Tennessee. Stickers, shirts, and more." />
+  <link rel="canonical" href="https://jonathangrishamauthor.com/shop" />
+  <meta property="og:title" content="Shop | Jonathan Grisham" />
+  <meta property="og:description" content="Official merch — stickers, shirts, and more." />
+  <meta property="og:image" content="https://jonathangrishamauthor.com/og-card.png" />
+  <meta property="og:url" content="https://jonathangrishamauthor.com/shop" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cinzel:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=IM+Fell+English:ital@0;1&family=Special+Elite&display=swap" />
+  <link rel="stylesheet" href="/style.css" />
+
+  <style>
+    .shop-hero {
+      padding: 5rem 0 2.5rem;
+      text-align: center;
+    }
+    .shop-hero h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.4rem, 6vw, 4.5rem);
+      font-weight: 900;
+      color: var(--text);
+      letter-spacing: 0.08em;
+      margin: 0 0 0.5rem;
+    }
+    .shop-hero p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      color: var(--bone);
+      margin: 0;
+    }
+    .shop-divider {
+      width: 80px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--blood), var(--blood-bright));
+      margin: 1.4rem auto 3rem;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 2rem;
+      padding-bottom: 5rem;
+    }
+
+    .product-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+    .product-card:hover {
+      border-color: var(--blood-bright);
+      transform: translateY(-3px);
+    }
+    .product-card img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      background: #0e0a0f;
+      display: block;
+    }
+    .product-info {
+      padding: 1.1rem 1.2rem 1.4rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .product-name {
+      font-family: 'Cinzel', serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.04em;
+    }
+    .product-type {
+      font-family: 'Special Elite', monospace;
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .product-card a.buy-btn {
+      display: block;
+      margin-top: auto;
+      padding: 0.55rem 1rem;
+      text-align: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      background: var(--blood);
+      color: var(--text);
+      border: 1px solid var(--blood-bright);
+      border-radius: var(--r);
+      text-decoration: none;
+      transition: background 0.18s;
+    }
+    .product-card a.buy-btn:hover {
+      background: var(--blood-bright);
+    }
+
+    .coming-soon-banner {
+      background: rgba(139,18,18,0.12);
+      border: 1px solid var(--blood-dim);
+      border-radius: var(--r-lg);
+      padding: 1.2rem 1.6rem;
+      text-align: center;
+      margin-bottom: 3rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      color: var(--bone);
+    }
+    .coming-soon-banner strong {
+      color: var(--blood-bright);
+    }
+
+    .section-label {
+      font-family: 'Special Elite', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      color: var(--blood-bright);
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NOISE OVERLAY -->
+  <div class="noise" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;padding-top:1rem;padding-bottom:1rem;">
+      <a href="/" style="text-decoration:none;">
+        <span style="font-family:'Cinzel',serif;font-weight:900;font-size:1.1rem;color:var(--text);letter-spacing:0.08em;">JONATHAN GRISHAM</span>
+      </a>
+      <nav aria-label="Main navigation" style="display:flex;gap:1.8rem;">
+        <a href="/#books" style="font-family:'Bebas Neue',sans-serif;letter-spacing:0.1em;color:var(--muted);font-size:1rem;transition:color 0.18s;" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'">Books</a>
+        <a href="/#about" style="font-family:'Bebas Neue',sans-serif;letter-spacing:0.1em;color:var(--muted);font-size:1rem;transition:color 0.18s;" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'">About</a>
+        <a href="/#music" style="font-family:'Bebas Neue',sans-serif;letter-spacing:0.1em;color:var(--muted);font-size:1rem;transition:color 0.18s;" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'">Music</a>
+        <a href="/shop" style="font-family:'Bebas Neue',sans-serif;letter-spacing:0.1em;color:var(--blood-bright);font-size:1rem;border-bottom:1px solid var(--blood);">Shop</a>
+        <a href="/#signed" style="font-family:'Bebas Neue',sans-serif;letter-spacing:0.1em;color:var(--muted);font-size:1rem;transition:color 0.18s;" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <div class="shop-hero">
+        <p class="section-label">Official Merch</p>
+        <h1>The Shop</h1>
+        <div class="shop-divider"></div>
+      </div>
+
+      <div class="coming-soon-banner">
+        <strong>Shop launching soon.</strong> Items below are a preview. Follow on <a href="https://www.facebook.com/jonathangrishamauthor" target="_blank" rel="noreferrer" style="color:var(--blood-bright);">Facebook</a> for the announcement.
+      </div>
+
+      <p class="section-label">Stickers</p>
+      <div class="product-grid">
+
+        <div class="product-card">
+          <img src="/merch/sticker-the-real-thing.png" alt="The Real Thing sticker" loading="lazy" />
+          <div class="product-info">
+            <div class="product-name">The Real Thing</div>
+            <div class="product-type">Sticker</div>
+            <a href="https://jonathan-grisham-shop.fourthwall.com" target="_blank" rel="noreferrer" class="buy-btn">Shop Now</a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="/merch/sticker-angels.png" alt="Angels sticker" loading="lazy" />
+          <div class="product-info">
+            <div class="product-name">Angels</div>
+            <div class="product-type">Sticker</div>
+            <a href="https://jonathan-grisham-shop.fourthwall.com" target="_blank" rel="noreferrer" class="buy-btn">Shop Now</a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="/merch/sticker-big-orange.png" alt="Big Orange sticker" loading="lazy" />
+          <div class="product-info">
+            <div class="product-name">Big Orange</div>
+            <div class="product-type">Sticker</div>
+            <a href="https://jonathan-grisham-shop.fourthwall.com" target="_blank" rel="noreferrer" class="buy-btn">Shop Now</a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="/merch/sticker-devil.png" alt="Devil sticker" loading="lazy" />
+          <div class="product-info">
+            <div class="product-name">Devil</div>
+            <div class="product-type">Sticker</div>
+            <a href="https://jonathan-grisham-shop.fourthwall.com" target="_blank" rel="noreferrer" class="buy-btn">Shop Now</a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="/merch/sticker-growing-up.png" alt="Growing Up sticker" loading="lazy" />
+          <div class="product-info">
+            <div class="product-name">Growing Up</div>
+            <div class="product-type">Sticker</div>
+            <a href="https://jonathan-grisham-shop.fourthwall.com" target="_blank" rel="noreferrer" class="buy-btn">Shop Now</a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="/merch/sticker-kept-warm.png" alt="Kept Warm sticker" loading="lazy" />
+          <div class="product-info">
+            <div class="product-name">Kept Warm</div>
+            <div class="product-type">Sticker</div>
+            <a href="https://jonathan-grisham-shop.fourthwall.com" target="_blank" rel="noreferrer" class="buy-btn">Shop Now</a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="/merch/sticker-my-baby.png" alt="My Baby sticker" loading="lazy" />
+          <div class="product-info">
+            <div class="product-name">My Baby</div>
+            <div class="product-type">Sticker</div>
+            <a href="https://jonathan-grisham-shop.fourthwall.com" target="_blank" rel="noreferrer" class="buy-btn">Shop Now</a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="/merch/sticker-spur.png" alt="Spur sticker" loading="lazy" />
+          <div class="product-info">
+            <div class="product-name">Spur</div>
+            <div class="product-type">Sticker</div>
+            <a href="https://jonathan-grisham-shop.fourthwall.com" target="_blank" rel="noreferrer" class="buy-btn">Shop Now</a>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="section-label" style="margin-top:1rem;">Apparel</p>
+      <div class="product-grid">
+
+        <div class="product-card">
+          <img src="/merch/brand-print-dark-shirt.png" alt="Brand Print Dark Shirt" loading="lazy" />
+          <div class="product-info">
+            <div class="product-name">Brand Print — Dark</div>
+            <div class="product-type">T-Shirt</div>
+            <a href="https://jonathan-grisham-shop.fourthwall.com" target="_blank" rel="noreferrer" class="buy-btn">Shop Now</a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="/merch/brand-print-light-shirt.png" alt="Brand Print Light Shirt" loading="lazy" />
+          <div class="product-info">
+            <div class="product-name">Brand Print — Light</div>
+            <div class="product-type">T-Shirt</div>
+            <a href="https://jonathan-grisham-shop.fourthwall.com" target="_blank" rel="noreferrer" class="buy-btn">Shop Now</a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer style="border-top:1px solid var(--line);padding:2.5rem 0;margin-top:2rem;">
+    <div class="container" style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center;">
+      <span style="font-family:'Special Elite',monospace;font-size:0.75rem;color:var(--muted);">© 2025 Jonathan Grisham. All rights reserved.</span>
+      <nav style="display:flex;gap:1.4rem;flex-wrap:wrap;">
+        <a href="/#books" style="font-family:'Bebas Neue',sans-serif;letter-spacing:0.1em;color:var(--muted);font-size:0.9rem;">Books</a>
+        <a href="/#about" style="font-family:'Bebas Neue',sans-serif;letter-spacing:0.1em;color:var(--muted);font-size:0.9rem;">About</a>
+        <a href="/#music" style="font-family:'Bebas Neue',sans-serif;letter-spacing:0.1em;color:var(--muted);font-size:0.9rem;">Music</a>
+        <a href="/shop" style="font-family:'Bebas Neue',sans-serif;letter-spacing:0.1em;color:var(--blood-bright);font-size:0.9rem;">Shop</a>
+        <a href="/#signed" style="font-family:'Bebas Neue',sans-serif;letter-spacing:0.1em;color:var(--muted);font-size:0.9rem;">Contact</a>
+        <a href="/privacy" style="font-family:'Bebas Neue',sans-serif;letter-spacing:0.1em;color:var(--muted);font-size:0.9rem;">Privacy</a>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>
