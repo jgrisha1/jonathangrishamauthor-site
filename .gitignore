@@ -11,3 +11,8 @@ deploy-log.txt
 dbg.log
 .DS_Store
 Thumbs.db
+
+# Codex / AI temp artifacts
+.codex-*/
+AGENTS.md
+.codex-*.zip
