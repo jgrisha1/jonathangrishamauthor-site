@@ -93,6 +93,14 @@
     .r-card{background:rgba(13,8,1,.8);border:1px solid rgba(140,90,30,.14);border-left:2px solid var(--sp-clay);padding:1rem 1.1rem;border-radius:2px}
     .r-q{font-family:'IM Fell English',serif;font-style:italic;font-size:.9rem;line-height:1.55;color:var(--sp-text);margin-bottom:.5rem}
     .r-src{font-family:'Special Elite',monospace;font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--sp-muted)}
+    /* ── BOOK HERO ─────────────────────────────── */
+    .book-hero { position:relative; width:100%; min-height:68vh; display:flex; align-items:flex-end; overflow:hidden; }
+    .book-hero-bg { position:absolute; inset:0; background-size:cover; background-position:center 35%; background-repeat:no-repeat; }
+    .book-hero-overlay { position:absolute; inset:0; background:linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(3,2,1,0.52) 48%, rgba(6,4,2,0.93) 80%, #060402 100%); }
+    .book-hero-inner { position:relative; z-index:1; padding-top:6rem; padding-bottom:3.5rem; }
+    .book-hero-lbl { display:block; font-family:'Special Elite',monospace; font-size:0.56rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--sp-clay); margin-bottom:0.8rem; opacity:0.85; }
+    .book-hero-title { font-family:'Cinzel',serif; font-weight:900; font-size:clamp(2.8rem,8vw,6.5rem); line-height:1; color:#e8d8b8; text-shadow:0 2px 60px rgba(0,0,0,0.95),0 0 80px rgba(100,60,10,0.2); margin:0 0 0.6rem; letter-spacing:0.05em; }
+    .book-hero-by { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1rem; color:rgba(232,216,184,0.45); letter-spacing:0.08em; margin:0; }
     /* SIGNED FORM */
     .sf-wrap{margin-top:3rem;border:1px solid rgba(140,90,30,.28);border-top:3px solid var(--sp-clay);background:rgba(10,6,1,.98);padding:2rem;border-radius:3px;position:relative}
     .sf-wrap::before{content:'DIRECT // ORDER FORM';font-family:'Special Elite',monospace;font-size:.5rem;letter-spacing:.28em;color:var(--sp-clay);position:absolute;top:-.62rem;left:1.2rem;background:var(--sp-bg);padding:0 .5rem}
@@ -127,7 +135,19 @@
         <a href="../index.html#books">Books</a><span>/</span>
         SPUR
       </nav>
+    </div>
 
+    <section class="book-hero" aria-label="SPUR — book hero">
+      <div class="book-hero-bg" style="background-image:url('../images/hero-spur.jpg')"></div>
+      <div class="book-hero-overlay"></div>
+      <div class="container book-hero-inner">
+        <span class="book-hero-lbl">Southern Gothic &bull; Family Horror &bull; Slow Burn</span>
+        <h1 class="book-hero-title">SPUR</h1>
+        <p class="book-hero-by">By Jonathan Grisham</p>
+      </div>
+    </section>
+
+    <div class="container">
       <div class="book-page-grid">
         <aside class="book-page-cover">
           <img src="../cover-spur.jpg" alt="SPUR by Jonathan Grisham — Southern Gothic Horror" width="340" height="510" />
@@ -167,8 +187,6 @@
 
         <article>
           <span class="label">Southern Gothic &bull; Family Horror &bull; Slow Burn</span>
-          <h1 class="book-page-title">SPUR</h1>
-          <p class="book-page-byline">By Jonathan Grisham</p>
           <hr class="sp-rule" />
 
           <div class="book-page-synopsis">
@@ -227,38 +245,4 @@
         </div>
         <div class="related-grid">
           <a href="/books/the-big-orange-monster-fucked-up" class="related-card"><img src="../cover-big-orange-monster.jpg" alt="The Big Orange Monster Fucked Up" loading="lazy" /><span>The Big Orange Monster Fucked Up</span></a>
-          <a href="/books/kept-warm-for-the-mountain" class="related-card"><img src="../cover-kept-warm.png" alt="Kept Warm for the Mountain" loading="lazy" /><span>Kept Warm for the Mountain</span></a>
-          <a href="/books/my-baby" class="related-card"><img src="../cover-my-baby.jpg" alt="My Baby" loading="lazy" /><span>My Baby</span></a>
-          <a href="/books/the-devil-finds-a-home" class="related-card"><img src="../cover-devil.jpg" alt="The Devil Finds a Home" loading="lazy" /><span>The Devil Finds a Home</span></a>
-                  <a href="/books/growing-up-independent-baptist" class="related-card"><img src="../cover-growing-up.jpg" alt="Growing Up Independent Baptist" loading="lazy" /><span>Growing Up Independent Baptist</span></a>
-        </div>
-      </section>
-    </div>
-  </main>
-
-  <footer>
-    <div class="container">
-      <div class="footer-inner">
-        <div class="footer-brand">
-          <div class="brand-name">Jonathan Grisham</div>
-          <div class="brand-sub">East Tennessee</div>
-        </div>
-        <nav class="footer-links" aria-label="Footer navigation">
-          <a href="../index.html#books">Books</a>
-          <a href="../index.html#about">About</a>
-          <a href="../index.html#music">Music</a>
-          <a href="../index.html#signed">Contact</a>
-        </nav>
-      </div>
-      <div class="footer-legal">
-        <span>&copy; 2025&ndash;<span id="yr">2026</span> Jonathan Grisham. All rights reserved.</span>
-        <a href="/privacy">Privacy Policy</a>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById('yr').textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
+          <a hre

@@ -175,6 +175,14 @@
     .r-card{background:rgba(2,10,10,.9);border:1px solid rgba(0,168,120,.12);border-top:2px solid var(--mb-green);padding:1rem 1.1rem;border-radius:1px}
     .r-q{font-family:'Space Grotesk',sans-serif;font-weight:300;font-size:.9rem;line-height:1.6;color:var(--mb-text);margin-bottom:.5rem;font-style:italic}
     .r-src{font-family:'IBM Plex Mono',monospace;font-size:.53rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mb-muted)}
+    /* ── BOOK HERO ─────────────────────────────── */
+    .book-hero { position:relative; width:100%; min-height:68vh; display:flex; align-items:flex-end; overflow:hidden; }
+    .book-hero-bg { position:absolute; inset:0; background-size:cover; background-position:center 40%; background-repeat:no-repeat; }
+    .book-hero-overlay { position:absolute; inset:0; background:linear-gradient(to bottom, rgba(0,0,0,0.08) 0%, rgba(0,3,3,0.5) 48%, rgba(1,5,5,0.93) 80%, #010505 100%); }
+    .book-hero-inner { position:relative; z-index:1; padding-top:6rem; padding-bottom:3.5rem; }
+    .book-hero-lbl { display:block; font-family:'IBM Plex Mono',monospace; font-size:0.56rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--mb-green); margin-bottom:0.8rem; opacity:0.85; }
+    .book-hero-title { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(2.8rem,8vw,6.5rem); line-height:1; color:var(--mb-bright); text-shadow:0 2px 60px rgba(0,0,0,0.95),0 0 80px rgba(0,168,120,0.15); margin:0 0 0.6rem; letter-spacing:-0.02em; }
+    .book-hero-by { font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:rgba(0,212,160,0.4); letter-spacing:0.14em; margin:0; }
   </style>
 </head>
 <body data-book-effect="nurseryRot" data-effect-accent="#b98a8a">
@@ -203,7 +211,19 @@
         <a href="../index.html#books">Books</a><span>/</span>
         My Baby
       </nav>
+    </div>
 
+    <section class="book-hero" aria-label="My Baby — book hero">
+      <div class="book-hero-bg" style="background-image:url('../images/hero-my-baby.jpg')"></div>
+      <div class="book-hero-overlay"></div>
+      <div class="container book-hero-inner">
+        <span class="book-hero-lbl">Medical Horror &bull; Reproductive Dread &bull; Maximum Severity</span>
+        <h1 class="book-hero-title">My Baby</h1>
+        <p class="book-hero-by">By Jonathan Grisham</p>
+      </div>
+    </section>
+
+    <div class="container">
       <div class="book-page-grid">
         <aside class="book-page-cover">
           <img src="../cover-my-baby.jpg" alt="My Baby by Jonathan Grisham — Medical Horror Extreme Fiction" width="340" height="510" />
@@ -249,8 +269,6 @@
           </div>
 
           <span class="label">Medical Horror &bull; Reproductive Dread &bull; Maximum Severity</span>
-          <h1 class="book-page-title">My Baby</h1>
-          <p class="book-page-byline">By Jonathan Grisham</p>
 
           <div class="mb-data">
             <div class="mb-cell"><span class="mb-cell-key">Author</span><span class="mb-cell-val">Grisham, J.</span></div>
@@ -324,37 +342,4 @@
           </div>
           <div class="related-grid">
             <a href="/books/kept-warm-for-the-mountain" class="related-card"><img src="../cover-kept-warm.png" alt="Kept Warm for the Mountain" loading="lazy" /><span>Kept Warm for the Mountain</span></a>
-            <a href="/books/the-devil-finds-a-home" class="related-card"><img src="../cover-devil.jpg" alt="The Devil Finds a Home" loading="lazy" /><span>The Devil Finds a Home</span></a>
-            <a href="/books/angels" class="related-card"><img src="../cover-angels.jpg" alt="Angels" loading="lazy" /><span>Angels</span></a>
-            <a href="/books/the-big-orange-monster-fucked-up" class="related-card"><img src="../cover-big-orange-monster.jpg" alt="The Big Orange Monster Fucked Up" loading="lazy" /><span>The Big Orange Monster Fucked Up</span></a>
-            <a href="/books/spur" class="related-card"><img src="../cover-spur.jpg" alt="SPUR by Jonathan Grisham" loading="lazy" /><span>SPUR</span></a>
-            <a href="/books/growing-up-independent-baptist" class="related-card"><img src="../cover-growing-up.jpg" alt="Growing Up Independent Baptist" loading="lazy" /><span>Growing Up Independent Baptist</span></a>
-          </div>
-        </div>
-      </section>
-    </div>
-  </main>
-
-  <footer>
-    <div class="container">
-      <div class="footer-inner">
-        <div class="footer-brand">
-          <div class="brand-name">Jonathan Grisham</div>
-          <div class="brand-sub">East Tennessee</div>
-        </div>
-        <nav class="footer-links" aria-label="Footer navigation">
-          <a href="../index.html#books">Books</a>
-          <a href="../index.html#about">About</a>
-          <a href="../index.html#music">Music</a>
-          <a href="../index.html#signed">Contact</a>
-        </nav>
-      </div>
-      <div class="footer-legal">
-        <span>&copy; 2025&ndash;<span id="yr">2026</span> Jonathan Grisham. All rights reserved.</span>
-        <a href="/privacy">Privacy Policy</a>
-      </div>
-    </div>
-  </footer>
-  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
-</body>
-</html>
+            <a href="/books/the-devil-finds-a-home" class="related-card"><img src="../cover-devil.jpg" alt="The Devil Finds a Home" loading="lazy" /><span>The Devil Finds a Home</s
