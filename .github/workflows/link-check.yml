@@ -24,8 +24,8 @@ jobs:
             --exclude "amazon\.com"
             --exclude "mailto:"
             --exclude "localhost"
-            --exclude "fonts\.googleapis\.com$"
-            --exclude "fonts\.gstatic\.com$"
+            --exclude "fonts\.googleapis\.com"
+            --exclude "fonts\.gstatic\.com"
             './**/*.html'
           fail: true
         env:
