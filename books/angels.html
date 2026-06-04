@@ -51,7 +51,24 @@
   <style>
     /* ── BOOK HERO ─────────────────────────────── */
     .book-hero { position:relative; width:100%; min-height:68vh; display:flex; align-items:flex-end; overflow:hidden; }
-    .book-hero-bg { position:absolute; inset:0; background-size:cover; background-position:center 40%; background-repeat:no-repeat; }
+    .book-hero-bg {
+      position:absolute; inset:0;
+      background:
+        /* stained glass window — central shaft upward */
+        radial-gradient(ellipse 18% 55% at 50% 0%, rgba(160,80,20,0.38) 0%, transparent 70%),
+        /* sigil glow spreading from floor */
+        radial-gradient(ellipse 65% 35% at 50% 100%, rgba(140,8,8,0.55) 0%, transparent 60%),
+        /* left column darkness */
+        radial-gradient(ellipse 35% 90% at 0% 50%, rgba(6,0,10,0.65) 0%, transparent 55%),
+        /* right column darkness */
+        radial-gradient(ellipse 35% 90% at 100% 50%, rgba(6,0,10,0.65) 0%, transparent 55%),
+        /* deep violet void at ceiling */
+        radial-gradient(ellipse 100% 35% at 50% 0%, rgba(28,4,48,0.55) 0%, transparent 65%),
+        /* faint ritual circle center */
+        radial-gradient(ellipse 30% 30% at 50% 55%, rgba(80,4,80,0.15) 0%, transparent 60%),
+        /* base: cold dark stone */
+        linear-gradient(180deg, #0a0310 0%, #120616 35%, #0d0412 65%, #090308 100%);
+    }
     .book-hero-overlay { position:absolute; inset:0; background:linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(4,2,6,0.5) 48%, rgba(9,6,8,0.93) 80%, #090608 100%); }
     .book-hero-inner { position:relative; z-index:1; padding-top:6rem; padding-bottom:3.5rem; }
     .book-hero-lbl { display:block; font-family:'Special Elite',monospace; font-size:0.58rem; letter-spacing:0.3em; text-transform:uppercase; color:#c8b4e0; margin-bottom:0.8rem; opacity:0.85; }
@@ -88,7 +105,7 @@
     </div>
 
     <section class="book-hero" aria-label="Angels — book hero">
-      <div class="book-hero-bg" style="background-image:url('../images/hero-angels.jpg')"></div>
+      <div class="book-hero-bg"></div>
       <div class="book-hero-overlay"></div>
       <div class="container book-hero-inner">
         <span class="book-hero-lbl">Occult Horror &bull; Forbidden Knowledge</span>
@@ -162,19 +179,4 @@
         </div>
         <div class="related-grid">
           <a href="/books/kept-warm-for-the-mountain" class="related-card">
-            <img src="../cover-kept-warm.png" alt="Kept Warm for the Mountain" loading="lazy" />
-            <span>Kept Warm for the Mountain</span>
-          </a>
-          <a href="/books/the-devil-finds-a-home" class="related-card">
-            <img src="../cover-devil.jpg" alt="The Devil Finds a Home" loading="lazy" />
-            <span>The Devil Finds a Home</span>
-          </a>
-          <a href="/books/my-baby" class="related-card">
-            <img src="../cover-my-baby.jpg" alt="My Baby" loading="lazy" />
-            <span>My Baby</span>
-          </a>
-          <a href="/books/growing-up-independent-baptist" class="related-card">
-            <img src="../cover-growing-up.jpg" alt="Growing Up Independent Baptist" loading="lazy" />
-            <span>Growing Up Independent Baptist</span>
-          </a>
-          <a href="/books/the-bi
+            <img src="../cove

@@ -177,7 +177,25 @@
     .r-src{font-family:'IBM Plex Mono',monospace;font-size:.53rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mb-muted)}
     /* ── BOOK HERO ─────────────────────────────── */
     .book-hero { position:relative; width:100%; min-height:68vh; display:flex; align-items:flex-end; overflow:hidden; }
-    .book-hero-bg { position:absolute; inset:0; background-size:cover; background-position:center 40%; background-repeat:no-repeat; }
+    .book-hero-bg {
+      position:absolute; inset:0;
+      background:
+        /* overhead fluorescent — sickly clinical green */
+        radial-gradient(ellipse 35% 30% at 50% 0%, rgba(0,110,75,0.22) 0%, transparent 60%),
+        /* IV monitor glow — upper right */
+        radial-gradient(ellipse 18% 28% at 88% 18%, rgba(0,90,65,0.18) 0%, transparent 50%),
+        /* blood pool spreading from floor */
+        radial-gradient(ellipse 60% 28% at 45% 100%, rgba(70,2,2,0.55) 0%, transparent 58%),
+        /* contamination seep — left wall */
+        radial-gradient(ellipse 35% 70% at 0% 50%, rgba(0,50,40,0.14) 0%, transparent 55%),
+        /* cold void ceiling */
+        radial-gradient(ellipse 100% 30% at 50% 0%, rgba(0,0,0,0.45) 0%, transparent 65%),
+        /* clinical grid */
+        repeating-linear-gradient(90deg, transparent 0, transparent 42px, rgba(0,110,80,0.016) 42px, rgba(0,110,80,0.016) 43px),
+        repeating-linear-gradient(0deg, transparent 0, transparent 42px, rgba(0,110,80,0.016) 42px, rgba(0,110,80,0.016) 43px),
+        /* base: near-void */
+        linear-gradient(180deg, #010505 0%, #020c08 35%, #010806 65%, #010404 100%);
+    }
     .book-hero-overlay { position:absolute; inset:0; background:linear-gradient(to bottom, rgba(0,0,0,0.08) 0%, rgba(0,3,3,0.5) 48%, rgba(1,5,5,0.93) 80%, #010505 100%); }
     .book-hero-inner { position:relative; z-index:1; padding-top:6rem; padding-bottom:3.5rem; }
     .book-hero-lbl { display:block; font-family:'IBM Plex Mono',monospace; font-size:0.56rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--mb-green); margin-bottom:0.8rem; opacity:0.85; }
@@ -214,7 +232,7 @@
     </div>
 
     <section class="book-hero" aria-label="My Baby — book hero">
-      <div class="book-hero-bg" style="background-image:url('../images/hero-my-baby.jpg')"></div>
+      <div class="book-hero-bg"></div>
       <div class="book-hero-overlay"></div>
       <div class="container book-hero-inner">
         <span class="book-hero-lbl">Medical Horror &bull; Reproductive Dread &bull; Maximum Severity</span>
@@ -325,21 +343,4 @@
                 <span class="r-src">Goodreads</span>
               </div>
               <div class="r-card">
-                <p class="r-q">"The clinical coldness of the prose is what makes this unbearable. It reads like a report from inside a nightmare."</p>
-                <span class="r-src">Reader Reaction</span>
-              </div>
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <section class="section">
-        <div class="container">
-          <div style="margin-bottom:1.8rem;">
-            <span class="label">More from Jonathan Grisham</span>
-            <hr class="bleeder" />
-            <h2 class="h-section" style="font-size:1.9rem;">Also Available</h2>
-          </div>
-          <div class="related-grid">
-            <a href="/books/kept-warm-for-the-mountain" class="related-card"><img src="../cover-kept-warm.png" alt="Kept Warm for the Mountain" loading="lazy" /><span>Kept Warm for the Mountain</span></a>
-            <a href="/books/the-devil-finds-a-home" class="related-card"><img src="../cover-devil.jpg" alt="The Devil Finds a Home" loading="lazy" /><span>The Devil Finds a Home</s
+                <p class="r-q">"The clinical coldne
