@@ -1,0 +1,760 @@
+/* =========================================================
+   GrishamHorror.com — Global Stylesheet
+   A deliberately "unstable" aesthetic for horror fiction
+   ========================================================= */
+
+:root {
+  --blood:      #8b0000;
+  --blood-dark: #5a0000;
+  --ash:        #1a1a1a;
+  --char:       #111111;
+  --fog:        #2a2a2a;
+  --bone:       #d4c9b0;
+  --redact:     #0a0a0a;
+  --warning:    #ff3c00;
+  --clinical:   #a8c4b8;
+  --font-body:  'Georgia', 'Times New Roman', serif;
+  --font-mono:  'Courier New', 'Lucida Console', monospace;
+}
+
+/* --- Reset & Base --- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--char);
+  color: var(--bone);
+  font-family: var(--font-body);
+  line-height: 1.7;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a { color: var(--blood); text-decoration: none; }
+a:hover { color: var(--warning); }
+
+/* --- Noise Texture Overlay --- */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.35;
+}
+
+/* =========================================================
+   GATE — Age Verification
+   ========================================================= */
+
+.gate-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: radial-gradient(ellipse at center, #1f0000 0%, #0a0000 60%, #000 100%);
+  padding: 2rem;
+}
+
+.gate-container {
+  max-width: 520px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+}
+
+/* Jitter keyframe — 1-2px micro-displacements */
+@keyframes jitter {
+  0%   { transform: translate(0, 0); }
+  10%  { transform: translate(-1px, 1px); }
+  20%  { transform: translate(1px, -1px); }
+  30%  { transform: translate(0, 1px); }
+  40%  { transform: translate(1px, 0); }
+  50%  { transform: translate(-1px, -1px); }
+  60%  { transform: translate(0, 0); }
+  70%  { transform: translate(1px, 1px); }
+  80%  { transform: translate(-1px, 0); }
+  90%  { transform: translate(0, -1px); }
+  100% { transform: translate(0, 0); }
+}
+
+/* Jitter is applied by JS at random intervals */
+.jitter-active {
+  animation: jitter 0.18s steps(1) forwards;
+}
+
+.gate-sigil {
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
+  filter: drop-shadow(0 0 18px var(--blood));
+  display: block;
+  user-select: none;
+}
+
+.gate-title {
+  font-family: var(--font-mono);
+  font-size: clamp(1.4rem, 4vw, 2.2rem);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bone);
+  line-height: 1.2;
+  margin-bottom: 0.25rem;
+}
+
+.gate-subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  color: #666;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+}
+
+.gate-divider {
+  width: 60px;
+  height: 1px;
+  background: var(--blood);
+  margin: 0 auto 2rem;
+}
+
+.gate-warning {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: #888;
+  letter-spacing: 0.06em;
+  line-height: 1.9;
+  margin-bottom: 2.5rem;
+  border: 1px solid #2a1a1a;
+  padding: 1rem 1.2rem;
+  background: rgba(139, 0, 0, 0.05);
+}
+
+.gate-warning strong {
+  color: var(--warning);
+  font-weight: normal;
+}
+
+.gate-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-enter {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bone);
+  background: var(--blood-dark);
+  border: 1px solid var(--blood);
+  padding: 0.85rem 2.2rem;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.btn-enter:hover {
+  background: var(--blood);
+  box-shadow: 0 0 20px rgba(139, 0, 0, 0.5);
+}
+
+.btn-leave {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #555;
+  background: transparent;
+  border: 1px solid #2a2a2a;
+  padding: 0.85rem 2.2rem;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.btn-leave:hover {
+  color: #888;
+  border-color: #444;
+}
+
+.gate-disclaimer {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: #3a3a3a;
+  letter-spacing: 0.05em;
+  margin-top: 2.5rem;
+  line-height: 1.7;
+}
+
+/* Static flicker line */
+.gate-scan-line {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: rgba(139, 0, 0, 0.15);
+  pointer-events: none;
+  animation: scanline 8s linear infinite;
+  z-index: 100;
+}
+
+@keyframes scanline {
+  0%   { top: 0; opacity: 1; }
+  90%  { top: 100vh; opacity: 0.3; }
+  100% { top: 0; opacity: 0; }
+}
+
+/* =========================================================
+   VAULT — Book Listings
+   ========================================================= */
+
+.vault-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 5rem;
+}
+
+/* Header */
+.vault-header {
+  text-align: center;
+  border-bottom: 1px solid #2a1a1a;
+  padding-bottom: 2.5rem;
+  margin-bottom: 3.5rem;
+}
+
+.vault-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.vault-title {
+  font-family: var(--font-mono);
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  letter-spacing: 0.08em;
+  color: var(--bone);
+  text-transform: uppercase;
+}
+
+.vault-title span {
+  color: var(--blood);
+}
+
+.vault-subtitle {
+  font-size: 0.88rem;
+  color: #666;
+  margin-top: 0.75rem;
+  font-style: italic;
+}
+
+/* Nav */
+.vault-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  padding: 0 0.25rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.vault-nav-link {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #555;
+  transition: color 0.2s;
+}
+.vault-nav-link:hover { color: var(--blood); }
+
+/* Book Grid */
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* Book Card */
+.book-card {
+  background: #161616;
+  border: 1px solid #222;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: border-color 0.25s;
+}
+
+.book-card:hover {
+  border-color: #3a1a1a;
+}
+
+.book-card-inner {
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* Book cover strip */
+.book-cover-strip {
+  height: 6px;
+  background: var(--blood-dark);
+  margin-bottom: 1.4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.book-cover-strip::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%   { left: -100%; }
+  100% { left: 250%; }
+}
+
+.book-number {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: #3a3a3a;
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+}
+
+.book-title {
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  color: var(--bone);
+  line-height: 1.3;
+  margin-bottom: 0.3rem;
+  letter-spacing: 0.03em;
+}
+
+.book-series {
+  font-size: 0.72rem;
+  color: var(--blood);
+  letter-spacing: 0.1em;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+/* === REDACTION SYSTEM === */
+.book-description {
+  font-size: 0.83rem;
+  color: #777;
+  line-height: 1.75;
+  margin-bottom: 1.2rem;
+  position: relative;
+  flex: 1;
+}
+
+.redacted-text {
+  position: relative;
+  display: inline;
+}
+
+/* The black redaction bar */
+.redacted-text::before {
+  content: '';
+  position: absolute;
+  inset: 0 -2px;
+  background: var(--redact);
+  transition: opacity 0.3s ease;
+  border-radius: 1px;
+  z-index: 2;
+}
+
+/* On card hover: reveal (desktop) */
+.book-card:hover .redacted-text::before,
+.book-card.revealed .redacted-text::before {
+  opacity: 0;
+}
+
+/* Touch tap support: toggled via JS class .revealed */
+.redaction-hint {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  color: #3a3a3a;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  transition: opacity 0.3s;
+}
+
+.book-card:hover .redaction-hint,
+.book-card.revealed .redaction-hint {
+  opacity: 0;
+}
+
+/* === SEVERITY ASSESSMENT === */
+.severity-block {
+  border-top: 1px solid #222;
+  padding-top: 1rem;
+  margin-top: auto;
+}
+
+.severity-label {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #3a3a3a;
+  margin-bottom: 0.6rem;
+}
+
+.severity-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.severity-tag {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.22rem 0.55rem;
+  border: 1px solid;
+  border-radius: 1px;
+}
+
+.severity-tag.bio   { color: #c97070; border-color: #5a2020; background: rgba(139,0,0,0.08); }
+.severity-tag.psych { color: #9b8fc4; border-color: #3a2a5a; background: rgba(80,40,120,0.08); }
+.severity-tag.soc   { color: #7aadad; border-color: #1a4040; background: rgba(20,80,80,0.08); }
+.severity-tag.exist { color: #b89a60; border-color: #4a3a10; background: rgba(100,70,0,0.08); }
+
+/* CTA button on card */
+.book-cta {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--bone);
+  background: var(--blood-dark);
+  border: 1px solid #3a0000;
+  padding: 0.7rem 1rem;
+  margin-top: 1.2rem;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+}
+
+.book-cta:hover {
+  background: var(--blood);
+  color: var(--bone);
+  box-shadow: 0 0 14px rgba(139, 0, 0, 0.45);
+}
+
+/* =========================================================
+   RECOMMENDED SECTION — External authors / associate links
+   ========================================================= */
+
+.rec-section {
+  margin-top: 5rem;
+  padding-top: 3.5rem;
+  border-top: 1px solid #1a2a2a;
+}
+
+.rec-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.rec-title {
+  font-family: var(--font-mono);
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  letter-spacing: 0.08em;
+  color: var(--bone);
+  text-transform: uppercase;
+  margin-top: 0.5rem;
+}
+
+.rec-title span {
+  color: var(--clinical);
+}
+
+.rec-subtitle {
+  font-size: 0.8rem;
+  color: #555;
+  margin-top: 0.6rem;
+  font-style: italic;
+  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
+}
+
+/* External card — teal accent instead of blood-red */
+.book-card--external {
+  border-color: #1a2a2a;
+}
+
+.book-card--external:hover {
+  border-color: #1a3a3a;
+}
+
+.book-card--external .book-cover-strip {
+  background: #1a4040;
+}
+
+.book-card--external .book-series {
+  color: var(--clinical);
+}
+
+.book-card--external .book-cta {
+  background: #0d2a2a;
+  border-color: #1a4040;
+}
+
+.book-card--external .book-cta:hover {
+  background: #1a4040;
+  box-shadow: 0 0 14px rgba(168, 196, 184, 0.2);
+}
+
+.book-card--external .book-number {
+  color: #1a3a3a;
+}
+
+/* Non-fiction card — gold/amber accent */
+.book-card--nonfiction {
+  border-color: #2a2010;
+}
+
+.book-card--nonfiction:hover {
+  border-color: #3a3010;
+}
+
+.book-card--nonfiction .book-cover-strip {
+  background: #3a2a00;
+}
+
+.book-card--nonfiction .book-series {
+  color: var(--exist);
+}
+
+.book-card--nonfiction .book-cta {
+  background: #1e1800;
+  border-color: #3a2a00;
+}
+
+.book-card--nonfiction .book-cta:hover {
+  background: #3a2a00;
+  box-shadow: 0 0 14px rgba(184, 154, 96, 0.2);
+}
+
+.book-card--nonfiction .book-number {
+  color: #3a2a10;
+}
+
+/* Preorder badge — shown on upcoming titles */
+.preorder-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--warning);
+  border: 1px solid var(--warning);
+  padding: 0.15rem 0.5rem;
+  margin-bottom: 0.75rem;
+  background: rgba(255, 60, 0, 0.05);
+}
+
+/* Footer */
+.vault-footer {
+  text-align: center;
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid #1a1a1a;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: #333;
+  letter-spacing: 0.1em;
+}
+
+/* =========================================================
+   REDIRECT PAGE
+   ========================================================= */
+.redirect-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #0a0000;
+  text-align: center;
+  padding: 2rem;
+}
+
+.redirect-box {
+  font-family: var(--font-mono);
+}
+
+.redirect-box h1 {
+  font-size: 1.1rem;
+  color: var(--blood);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.redirect-box p {
+  font-size: 0.75rem;
+  color: #555;
+  letter-spacing: 0.1em;
+}
+
+.redirect-spinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #2a1a1a;
+  border-top-color: var(--blood);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 1.5rem auto 0;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* =========================================================
+   TRANSMISSION ARCHIVE — Email Signup Section
+   ========================================================= */
+
+.transmission-section { margin-top: 5rem; padding-top: 3.5rem; border-top: 1px solid #2a1010; }
+.transmission-header  { text-align: center; margin-bottom: 2.5rem; }
+
+.transmission-title {
+  font-family: var(--font-mono);
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  letter-spacing: 0.08em;
+  color: var(--bone);
+  text-transform: uppercase;
+  margin-top: 0.5rem;
+}
+.transmission-title span { color: var(--blood); }
+
+.transmission-subtitle {
+  font-size: 0.8rem;
+  color: #555;
+  margin-top: 0.6rem;
+  font-style: italic;
+  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
+}
+
+.transmission-form-wrap {
+  max-width: 580px;
+  margin: 0 auto;
+  background: #161616;
+  border: 1px solid #2a1010;
+  padding: 2.2rem 2rem;
+}
+
+.transmission-lede {
+  font-size: 0.83rem;
+  color: #666;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+.transmission-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.22em;
+  color: #3a3a3a;
+  text-transform: uppercase;
+  margin-bottom: 0.65rem;
+}
+
+.transmission-input-row { display: flex; }
+
+.transmission-input {
+  flex: 1;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--bone);
+  background: #0d0d0d;
+  border: 1px solid #2a1a1a;
+  border-right: none;
+  padding: 0.78rem 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+  min-width: 0;
+}
+.transmission-input::placeholder { color: #2a2a2a; }
+.transmission-input:focus         { border-color: var(--blood); }
+
+.transmission-submit {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--bone);
+  background: var(--blood-dark);
+  border: 1px solid #3a0000;
+  padding: 0.78rem 1.4rem;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.transmission-submit:hover    { background: var(--blood); box-shadow: 0 0 14px rgba(139,0,0,0.4); }
+.transmission-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.transmission-error {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: var(--warning);
+  margin-top: 0.6rem;
+}
+
+.transmission-success      { text-align: center; padding: 1.5rem 0; }
+.transmission-success-code {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  color: var(--clinical);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+.transmission-success-msg  { font-size: 0.83rem; color: #666; line-height: 1.8; font-style: italic; }
+
+.transmission-disclaimer {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  color: #2a2a2a;
+  letter-spacing: 0.06em;
+  line-height: 1.8;
+  margin-top: 1.2rem;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .transmission-input-row { flex-direction: column; }
+  .transmission-input     { border-right: 1px solid #2a1a1a; border-bottom: none; }
+  .transmission-submit    { width: 100%; }
+  .transmission-form-wrap { padding: 1.5rem 1rem; }
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 640px) {
+  .book-grid { grid-template-columns: 1fr; }
+  .gate-buttons { flex-direction: column; }
+  .btn-enter, .btn-leave { width: 100%; }
+}

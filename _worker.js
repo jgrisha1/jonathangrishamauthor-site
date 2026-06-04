@@ -7,6 +7,11 @@
  *   EMAIL_PROVIDER = "resend" (default) or "ses"
  *   If resend: RESEND_API_KEY
  *   If ses:    AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_REGION
+ *
+ * KV bindings (wrangler.toml):
+ *   SUBSCRIBERS — jonathangrishamauthor-subscribers (id: bec9fd09bf414595ae5731283ddcb2af)
+ *   Stores newsletter signups as key=email, value=ISO timestamp.
+ *   Export: Cloudflare dashboard > KV > jonathangrishamauthor-subscribers > View
  */
 
 const ALLOWED_ORIGINS = [
@@ -309,9 +314,23 @@ export default {
         const email = sanitize(body.email);
         if (!email) return jsonResp({ error: 'Email is required.' }, 400, origin);
         if (!isValidEmail(email)) return jsonResp({ error: 'Invalid email address.' }, 400, origin);
+
+        // Check for duplicate before storing
+        const existing = env.SUBSCRIBERS ? await env.SUBSCRIBERS.get(email) : null;
+        if (existing) {
+          // Already subscribed — return ok silently (no double-email)
+          return jsonResp({ ok: true }, 200, origin);
+        }
+
+        // Persist to KV — key=email, value=signup timestamp
+        if (env.SUBSCRIBERS) {
+          await env.SUBSCRIBERS.put(email, ts, { metadata: { signedUp: ts } });
+        }
+
+        // Notify Jonathan
         await sendEmail(env, {
           subject: 'New mailing list signup - jonathangrishamauthor.com',
-          html: `<h2 style="font-family:sans-serif;color:#1a1a1a">New mailing list subscriber</h2><p style="font-family:sans-serif;font-size:15px"><strong>${escapeHtml(email)}</strong> signed up at ${escapeHtml(ts)}.</p><p style="font-family:sans-serif;font-size:13px;color:#666">Add them to your list and send the Highway of Teeth prologue.</p>`,
+          html: `<h2 style="font-family:sans-serif;color:#1a1a1a">New mailing list subscriber</h2><p style="font-family:sans-serif;font-size:15px"><strong>${escapeHtml(email)}</strong> signed up at ${escapeHtml(ts)}.</p><p style="font-family:sans-serif;font-size:13px;color:#666">Subscriber saved to KV. Export the full list any time from the Cloudflare dashboard &rsaquo; KV &rsaquo; jonathangrishamauthor-subscribers.</p>`,
           replyTo: email,
         });
 

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>GRISHAM HORROR — Enter at Your Own Risk</title>
+  <meta name="description" content="Extreme horror fiction by J. Grisham. Adults only." />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* Gate-specific overrides */
+    body { overflow: hidden; }
+  </style>
+</head>
+<body>
+
+  <!-- Scanline atmosphere effect -->
+  <div class="gate-scan-line" aria-hidden="true"></div>
+
+  <main class="gate-wrapper" id="gate">
+    <div class="gate-container" id="gate-content">
+
+      <!-- Sigil / logo mark -->
+      <span class="gate-sigil" aria-hidden="true">✦</span>
+
+      <h1 class="gate-title" id="jitter-target">
+        GRISHAM<br>HORROR
+      </h1>
+
+      <p class="gate-subtitle">// RESTRICTED ACCESS // ADULT CONTENT //</p>
+
+      <div class="gate-divider" aria-hidden="true"></div>
+
+      <div class="gate-warning" role="alert">
+        <strong>WARNING:</strong> This site contains extreme horror fiction
+        intended for <strong>mature audiences only</strong>. Material includes
+        graphic depictions of <strong>biological trauma</strong>,
+        <strong>psychological erosion</strong>, and
+        <strong>societal breach</strong>. Reader discretion is not merely
+        advised — it is <strong>required</strong>.
+        <br><br>
+        By entering, you confirm you are <strong>18 years of age or older</strong>
+        and legally permitted to view adult content in your jurisdiction.
+      </div>
+
+      <div class="gate-buttons">
+        <button class="btn-enter" id="btn-enter" onclick="enterSite()">
+          I Am 18+ — Enter
+        </button>
+        <button class="btn-leave" onclick="leaveSite()">
+          Exit — I Am Under 18
+        </button>
+      </div>
+
+      <p class="gate-disclaimer">
+        This gate exists to protect minors. No cookies are set for this
+        verification. Content on this site is fictional. Any resemblance to
+        actual persons or events is coincidental and unintended.<br>
+        &copy; Grisham Horror. All rights reserved.
+      </p>
+
+    </div>
+  </main>
+
+  <script>
+    /* ============================================================
+       GATE — Jitter Effect
+       Randomly applies a 1-2 px jitter animation to the title
+       at unpredictable intervals, making the UI feel unstable.
+       ============================================================ */
+    (function initJitter() {
+      const target = document.getElementById('jitter-target');
+      if (!target) return;
+
+      function scheduleNextJitter() {
+        // Random delay: 800ms – 4500ms between jitter bursts
+        const delay = 800 + Math.random() * 3700;
+
+        setTimeout(function () {
+          // How many rapid-fire jitters in this burst? (1–3)
+          const burstCount = Math.floor(Math.random() * 3) + 1;
+          let fired = 0;
+
+          function fireJitter() {
+            target.classList.remove('jitter-active');
+
+            // Force reflow so the animation restarts cleanly
+            void target.offsetWidth;
+
+            target.classList.add('jitter-active');
+            fired++;
+
+            if (fired < burstCount) {
+              setTimeout(fireJitter, 120 + Math.random() * 80);
+            } else {
+              // Remove class after animation completes
+              setTimeout(function () {
+                target.classList.remove('jitter-active');
+              }, 220);
+            }
+          }
+
+          fireJitter();
+          scheduleNextJitter(); // re-arm
+        }, delay);
+      }
+
+      scheduleNextJitter();
+    })();
+
+    /* ============================================================
+       GATE — Enter / Leave
+       ============================================================ */
+    function enterSite() {
+      // Optionally set a session flag (localStorage, no PII)
+      try { sessionStorage.setItem('age_verified', '1'); } catch (e) {}
+
+      // Fade out and redirect
+      document.getElementById('gate').style.transition = 'opacity 0.6s';
+      document.getElementById('gate').style.opacity = '0';
+      setTimeout(function () {
+        window.location.href = 'vault.html';
+      }, 620);
+    }
+
+    function leaveSite() {
+      window.location.href = 'https://www.google.com';
+    }
+
+    /* ============================================================
+       Scanline — subtle vertical drift speed variation
+       ============================================================ */
+    (function varyScans() {
+      const line = document.querySelector('.gate-scan-line');
+      if (!line) return;
+      setInterval(function () {
+        const dur = (6 + Math.random() * 5).toFixed(1) + 's';
+        line.style.animationDuration = dur;
+      }, 4000);
+    })();
+  </script>
+
+</body>
+</html>

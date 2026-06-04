@@ -1,0 +1,50 @@
+{
+  "_comment": "GrishamHorror.com short URL → KDP / Amazon destination mapping.",
+  "_usage":   "grishamhorror.com/<slug>  →  full Amazon/KDP URL",
+  "_update":  "Add a new entry for each published title. Use the book's Kindle ASIN page URL.",
+
+  "devil":        "https://www.amazon.com/dp/B08X1F45DD?tag=220500b-20",
+  "choir":        "https://www.amazon.com/dp/ASIN_CHOIR_HERE",
+  "pale":         "https://www.amazon.com/dp/ASIN_PALE_HERE",
+  "cartography":  "https://www.amazon.com/dp/ASIN_CART_HERE",
+  "threshold2":   "https://www.amazon.com/dp/ASIN_T2_HERE",
+  "lullaby":      "https://www.amazon.com/dp/ASIN_LULL_HERE",
+
+  "_comment_own":   "Jonathan Grisham's own published titles — KDP / Amazon (tag: 220500b-20).",
+  "mybaby":           "https://www.amazon.com/dp/B08X1GD18Z?tag=220500b-20",
+  "angels":           "https://www.amazon.com/dp/B08X186TY8?tag=220500b-20",
+  "warmforthemountain": "https://www.amazon.com/dp/B0GX7LYMM5?tag=220500b-20",
+  "bigmonster":         "https://www.amazon.com/dp/B0GX2V65RZ?tag=220500b-20",
+  "spur":               "https://www.amazon.com/dp/B0H2ZFPC94?tag=220500b-20",
+  "whenobedience":      "https://www.amazon.com/dp/B0H3VNGBCD?tag=220500b-20",
+
+  "dfh-fathersday":   "https://www.amazon.com/dp/1072824191?tag=220500b-20",
+
+  "_comment_rec":   "Recommended external authors — Amazon Associate links (tag: 220500b-20).",
+  "_rec_format":    "Replace ASIN_*_HERE with the book's Kindle ASIN (found in the Amazon product URL: amazon.com/dp/<ASIN>).",
+  "rec-tremblay":   "https://www.amazon.com/dp/B00MTSKHKO?tag=220500b-20",
+  "rec-nevill":     "https://www.amazon.com/dp/B005XMMO40?tag=220500b-20",
+  "rec-ligotti":    "https://www.amazon.com/dp/B00TY3ZOLE?tag=220500b-20",
+  "rec-jones":      "https://www.amazon.com/dp/B07THF63FL?tag=220500b-20",
+  "rec-barron":     "https://www.amazon.com/dp/B07H46219R?tag=220500b-20",
+  "rec-ketchum":    "https://www.amazon.com/dp/B001C2ZQDQ?tag=220500b-20",
+  "rec-bighead":    "https://www.amazon.com/dp/B0B928CG5Q?tag=220500b-20",
+  "rec-header":     "https://www.amazon.com/dp/B09CNZKJDX?tag=220500b-20",
+  "rec-norff":      "https://www.amazon.com/dp/B0BDLKTCN3?tag=220500b-20",
+  "rec-hell":       "https://www.amazon.com/dp/B0BZ3MNQQ2?tag=220500b-20",
+  "rec-gnd":        "https://www.amazon.com/dp/B003IHC34I?tag=220500b-20",
+  "rec-woman":          "https://www.amazon.com/dp/B004MPRXKE?tag=220500b-20",
+  "rec-resurrectionist":"https://www.amazon.com/dp/B00M6CNIRC?tag=220500b-20",
+  "rec-cellar":         "https://www.amazon.com/dp/B0028T82H4?tag=220500b-20",
+
+  "_comment_nf":        "Non-fiction — Counter-Intelligence section (cult recovery / rebuttal).",
+  "nf-ifb":             "https://www.amazon.com/dp/B08ZWBN52P?tag=220500b-20",
+  "nf-ifb2":            "https://www.amazon.com/dp/B0CM5WT9BX?tag=220500b-20",
+  "nf-combating":       "https://www.amazon.com/dp/B00V9DU340?tag=220500b-20",
+  "nf-freedomofmind":   "https://www.amazon.com/dp/B09S6SR735?tag=220500b-20",
+  "nf-takeback":        "https://www.amazon.com/dp/B0CN61N4F9?tag=220500b-20",
+  "nf-thoughtreform":   "https://www.amazon.com/dp/B006M9RZQA?tag=220500b-20",
+  "nf-calleduntoliberty": "https://www.amazon.com/dp/B09CRQL5LT?tag=220500b-20",
+
+  "_fallback":    "vault.html"
+}

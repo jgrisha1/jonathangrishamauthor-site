@@ -1,0 +1,43 @@
+# Cloudflare Pages / Netlify _redirects
+
+# Format: /source  /destination  status-code
+
+/devil              /go.html?book=devil              302
+/mybaby             /go.html?book=mybaby             302
+/angels             /go.html?book=angels             302
+/warmforthemountain /go.html?book=warmforthemountain 302
+/bigmonster         /go.html?book=bigmonster         302
+/spur               /go.html?book=spur               302
+/whenobedience      /go.html?book=whenobedience      302
+/choir          /go.html?book=choir         302
+/pale           /go.html?book=pale          302
+/cartography    /go.html?book=cartography   302
+/threshold2     /go.html?book=threshold2    302
+/lullaby        /go.html?book=lullaby       302
+
+# Recommended external authors (associate links):
+/dfh-fathersday /go.html?book=dfh-fathersday 302
+/rec-tremblay   /go.html?book=rec-tremblay   302
+/rec-nevill     /go.html?book=rec-nevill     302
+/rec-ligotti    /go.html?book=rec-ligotti    302
+/rec-jones      /go.html?book=rec-jones      302
+/rec-barron     /go.html?book=rec-barron     302
+/rec-ketchum    /go.html?book=rec-ketchum    302
+/rec-bighead    /go.html?book=rec-bighead    302
+/rec-header     /go.html?book=rec-header     302
+/rec-norff      /go.html?book=rec-norff      302
+/rec-hell       /go.html?book=rec-hell       302
+/rec-gnd        /go.html?book=rec-gnd        302
+/rec-woman            /go.html?book=rec-woman            302
+/rec-resurrectionist  /go.html?book=rec-resurrectionist  302
+/rec-cellar           /go.html?book=rec-cellar           302
+/nf-ifb               /go.html?book=nf-ifb               302
+/nf-ifb2              /go.html?book=nf-ifb2              302
+/nf-combating         /go.html?book=nf-combating         302
+/nf-freedomofmind     /go.html?book=nf-freedomofmind     302
+/nf-takeback          /go.html?book=nf-takeback          302
+/nf-thoughtreform         /go.html?book=nf-thoughtreform         302
+/nf-calleduntoliberty     /go.html?book=nf-calleduntoliberty     302
+
+# Add new lines here for future titles:
+# /newtitle     /go.html?book=newtitle      302

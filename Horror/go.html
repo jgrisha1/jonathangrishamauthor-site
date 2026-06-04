@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Redirecting — Grisham Horror</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <!-- Fallback meta-refresh if JS is disabled -->
+  <noscript><meta http-equiv="refresh" content="2;url=vault.html" /></noscript>
+</head>
+<body>
+
+  <div class="redirect-wrapper">
+    <div class="redirect-box">
+      <h1>Acquiring Dossier&hellip;</h1>
+      <p>Routing you to the KDP catalogue entry.</p>
+      <div class="redirect-spinner" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <script>
+    /* ============================================================
+       go.html — Short-URL Redirect Handler
+       ============================================================
+       Usage:
+         go.html?book=devil       → reads redirects.json, follows URL
+         go.html?book=unknown     → falls back to vault.html
+
+       For path-based slugs (requires server rewrite rules):
+         /devil  →  go.html?book=devil
+
+       If you are on a static host (Netlify, GitHub Pages, Vercel)
+       add a _redirects file (Netlify) or vercel.json routes entry.
+       See the comments at the bottom of this file for examples.
+       ============================================================ */
+
+    (function () {
+      /* --- 1. Parse the ?book= query param --- */
+      var params = new URLSearchParams(window.location.search);
+      var slug   = (params.get('book') || '').toLowerCase().trim();
+
+      /* --- 2. Load redirects.json and resolve --- */
+      fetch('redirects.json')
+        .then(function (res) {
+          if (!res.ok) throw new Error('Could not load redirects.json');
+          return res.json();
+        })
+        .then(function (map) {
+          var dest = map[slug] || map['_fallback'] || 'vault.html';
+          /* Brief pause so the user sees the redirect UI (feels intentional) */
+          setTimeout(function () {
+            window.location.replace(dest);
+          }, 900);
+        })
+        .catch(function () {
+          /* Graceful degradation: fall back to the vault */
+          window.location.replace('vault.html');
+        });
+    })();
+  </script>
+
+  <!--
+  ================================================================
+  SERVER-SIDE SHORT URL SETUP (choose your host)
+  ================================================================
+
+  ── Netlify (_redirects file in project root) ──────────────────
+  /devil          /go.html?book=devil         302
+  /choir          /go.html?book=choir         302
+  /pale           /go.html?book=pale          302
+  /cartography    /go.html?book=cartography   302
+  /threshold2     /go.html?book=threshold2    302
+  /lullaby        /go.html?book=lullaby       302
+
+  ── Vercel (vercel.json) ───────────────────────────────────────
+  {
+    "redirects": [
+      { "source": "/devil",       "destination": "/go.html?book=devil",       "permanent": false },
+      { "source": "/choir",       "destination": "/go.html?book=choir",       "permanent": false },
+      { "source": "/pale",        "destination": "/go.html?book=pale",        "permanent": false },
+      { "source": "/cartography", "destination": "/go.html?book=cartography", "permanent": false },
+      { "source": "/threshold2",  "destination": "/go.html?book=threshold2",  "permanent": false },
+      { "source": "/lullaby",     "destination": "/go.html?book=lullaby",     "permanent": false }
+    ]
+  }
+
+  ── Apache (.htaccess) ─────────────────────────────────────────
+  RewriteEngine On
+  RewriteRule ^devil$        /go.html?book=devil        [R=302,L]
+  RewriteRule ^choir$        /go.html?book=choir        [R=302,L]
+  RewriteRule ^pale$         /go.html?book=pale         [R=302,L]
+  RewriteRule ^cartography$  /go.html?book=cartography  [R=302,L]
+  RewriteRule ^threshold2$   /go.html?book=threshold2   [R=302,L]
+  RewriteRule ^lullaby$      /go.html?book=lullaby      [R=302,L]
+
+  ── Nginx (server block) ───────────────────────────────────────
+  location = /devil        { return 302 /go.html?book=devil; }
+  location = /choir        { return 302 /go.html?book=choir; }
+  location = /pale         { return 302 /go.html?book=pale; }
+  location = /cartography  { return 302 /go.html?book=cartography; }
+  location = /threshold2   { return 302 /go.html?book=threshold2; }
+  location = /lullaby      { return 302 /go.html?book=lullaby; }
+
+  ================================================================
+  HOW TO UPDATE REDIRECTS
+  ================================================================
+  1. Open redirects.json
+  2. Replace the ASIN_*_HERE placeholder with the real Amazon ASIN
+     e.g. "devil": "https://www.amazon.com/dp/B0CXYZ12AB"
+  3. Add a new line for each new title following the same pattern
+  4. Add the matching server rule above for the new slug
+  ================================================================
+  -->
+
+</body>
+</html>

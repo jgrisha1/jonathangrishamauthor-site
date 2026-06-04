@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="theme-color" content="#090608" />
+  <title>404 | Jonathan Grisham</title>
+  <meta name="robots" content="noindex, follow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" />
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    .not-found-wrap {
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+    .not-found-num {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(5rem, 18vw, 10rem);
+      font-weight: 900;
+      color: var(--blood);
+      line-height: 1;
+      letter-spacing: 0.04em;
+      margin: 0;
+    }
+    .not-found-rule {
+      width: 3rem;
+      border: none;
+      border-top: 1px solid var(--blood-dim);
+      margin: 1.5rem auto;
+    }
+    .not-found-head {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.1rem, 3vw, 1.6rem);
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin: 0 0 1rem;
+    }
+    .not-found-body {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: var(--bone);
+      max-width: 38ch;
+      line-height: 1.6;
+      margin: 0 auto 2.5rem;
+    }
+    .not-found-links {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .not-found-links a {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blood-bright);
+      text-decoration: none;
+      border-bottom: 1px solid var(--blood-dim);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .not-found-links a:hover {
+      color: var(--text);
+      border-color: var(--text);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a href="/" style="text-decoration:none;">
+        <div class="brand-wrap">
+          <div class="brand-name">Jonathan Grisham</div>
+          <span class="brand-sub">East Tennessee</span>
+        </div>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <div class="not-found-wrap">
+      <p class="not-found-num">404</p>
+      <hr class="not-found-rule" />
+      <h1 class="not-found-head">Something got lost out here</h1>
+      <p class="not-found-body">The page you were looking for is gone, or it never existed. Either way, you are not where you meant to be.</p>
+      <nav class="not-found-links" aria-label="Recovery navigation">
+        <a href="/">Back home</a>
+        <a href="/#books">Browse the books</a>
+        <a href="/#contact">Get in touch</a>
+      </nav>
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+      <p class="footer-copy">&copy; <span id="yr"></span> Jonathan Grisham. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+  <!-- Cloudflare Web Analytics handled automatically via Workers (Automatic setup) -->
+</body>
+</html>

@@ -38,3 +38,10 @@ binding = "ASSETS"
 # [r2_buckets]
 # binding     = "MEDIA"
 # bucket_name = "jonathangrishamauthor-media"
+
+# NEWSLETTER SUBSCRIBERS — Cloudflare KV (free tier)
+# Stores each subscriber as key=email, value=ISO timestamp
+# Export list any time from: Cloudflare dashboard > KV > jonathangrishamauthor-subscribers
+[[kv_namespaces]]
+binding     = "SUBSCRIBERS"
+id          = "bec9fd09bf414595ae5731283ddcb2af"

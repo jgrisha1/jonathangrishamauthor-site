@@ -1,0 +1,98 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: GrishamHorror.com — email signup backend (DynamoDB + Lambda + API Gateway)
+
+Globals:
+  Function:
+    Runtime: nodejs20.x
+    Timeout: 10
+    MemorySize: 128
+    Environment:
+      Variables:
+        SUBSCRIBERS_TABLE: !Ref SubscribersTable
+        SENDER_EMAIL: jonathan.grisham1990@gmail.com
+
+Resources:
+
+  # ── DynamoDB ──────────────────────────────────────────────────
+  SubscribersTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: grisham-subscribers
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: email
+          AttributeType: S
+      KeySchema:
+        - AttributeName: email
+          KeyType: HASH
+
+  # ── IAM Role ──────────────────────────────────────────────────
+  LambdaRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: grisham-horror-lambda-role
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal: { Service: lambda.amazonaws.com }
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+      Policies:
+        - PolicyName: GrishamHorrorInline
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - dynamodb:GetItem
+                  - dynamodb:PutItem
+                Resource: !GetAtt SubscribersTable.Arn
+              - Effect: Allow
+                Action: ses:SendEmail
+                Resource: '*'
+
+  # ── Lambda ────────────────────────────────────────────────────
+  SubscribeFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: grisham-subscribe
+      CodeUri: subscribe/
+      Handler: index.handler
+      Role: !GetAtt LambdaRole.Arn
+      Events:
+        SubscribePost:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref GrishamApi
+            Path: /subscribe
+            Method: POST
+
+  # ── API Gateway (HTTP API) ────────────────────────────────────
+  GrishamApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      StageName: $default
+      CorsConfiguration:
+        AllowOrigins:
+          - https://grishamhorror.tech
+          - https://www.grishamhorror.tech
+          - https://grishamhorror.com
+          - https://www.grishamhorror.com
+        AllowHeaders:
+          - Content-Type
+        AllowMethods:
+          - POST
+          - OPTIONS
+        MaxAge: 86400
+
+# ── Outputs ───────────────────────────────────────────────────
+Outputs:
+  ApiInvokeUrl:
+    Description: "Paste this URL into vault.html (replace REPLACE_WITH_API_GATEWAY_INVOKE_URL)"
+    Value: !Sub "https://${GrishamApi}.execute-api.${AWS::Region}.amazonaws.com"
+  SubscribeEndpoint:
+    Description: "Full subscribe endpoint"
+    Value: !Sub "https://${GrishamApi}.execute-api.${AWS::Region}.amazonaws.com/subscribe"
