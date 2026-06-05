@@ -45,6 +45,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cinzel:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=IM+Fell+English:ital@0;1&family=Special+Elite&display=swap" />
+  <link rel="preload" as="image" href="../images/hero-spur.webp" />
   <link rel="stylesheet" href="../style.css" />
   <link rel="stylesheet" href="../book-effects.css" />
   <script src="../book-effects.js" defer></script>
@@ -97,21 +98,9 @@
     .book-hero { position:relative; width:100%; min-height:68vh; display:flex; align-items:flex-end; overflow:hidden; }
     .book-hero-bg {
       position:absolute; inset:0;
-      background:
-        /* bone emergence — bleached calcium from right */
-        radial-gradient(ellipse 55% 85% at 100% 45%, rgba(175,155,120,0.18) 0%, transparent 55%),
-        /* secondary spur cluster — lower right */
-        radial-gradient(ellipse 35% 50% at 90% 85%, rgba(155,135,100,0.12) 0%, transparent 50%),
-        /* warm flesh undertone from below */
-        radial-gradient(ellipse 70% 38% at 50% 100%, rgba(85,32,8,0.38) 0%, transparent 55%),
-        /* cold smoke mist from above-left */
-        radial-gradient(ellipse 55% 45% at 15% 0%, rgba(30,22,14,0.4) 0%, transparent 60%),
-        /* deep shadow center */
-        radial-gradient(ellipse 50% 60% at 35% 45%, rgba(0,0,0,0.45) 0%, transparent 60%),
-        /* base: very dark warm */
-        linear-gradient(160deg, #090604 0%, #110804 40%, #070401 75%, #060402 100%);
+      background: url('../images/hero-spur.webp') center 35% / cover no-repeat #060402;
     }
-    .book-hero-overlay { position:absolute; inset:0; background:linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(3,2,1,0.52) 48%, rgba(6,4,2,0.93) 80%, #060402 100%); }
+    .book-hero-overlay { position:absolute; inset:0; background:linear-gradient(to bottom, rgba(0,0,0,0.12) 0%, rgba(3,2,1,0.55) 50%, rgba(6,4,2,0.88) 80%, #060402 100%); }
     .book-hero-inner { position:relative; z-index:1; padding-top:6rem; padding-bottom:3.5rem; }
     .book-hero-lbl { display:block; font-family:'Special Elite',monospace; font-size:0.56rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--sp-clay); margin-bottom:0.8rem; opacity:0.85; }
     .book-hero-title { font-family:'Cinzel',serif; font-weight:900; font-size:clamp(2.8rem,8vw,6.5rem); line-height:1; color:#e8d8b8; text-shadow:0 2px 60px rgba(0,0,0,0.95),0 0 80px rgba(100,60,10,0.2); margin:0 0 0.6rem; letter-spacing:0.05em; }
@@ -138,6 +127,7 @@
         <a href="../index.html#books">Books</a>
         <a href="../index.html#about">About</a>
         <a href="../index.html#music">Music</a>
+        <a href="/shop">Shop</a>
         <a href="../index.html#signed">Contact</a>
       </nav>
     </div>
@@ -280,7 +270,11 @@
           <a href="../index.html#books">Books</a>
           <a href="../index.html#about">About</a>
           <a href="../index.html#music">Music</a>
+          <a href="/shop">Shop</a>
           <a href="../index.html#signed">Contact</a>
+          <a href="https://www.amazon.com/Books-Jonathan-Grisham/s?rh=n:283155,p_27:Jonathan%2BGrisham" target="_blank" rel="noreferrer">Amazon</a>
+          <a href="https://www.goodreads.com/author/show/21208133.Jonathan_Grisham" target="_blank" rel="noreferrer">Goodreads</a>
+          <a href="https://www.facebook.com/jonathangrishamauthor" target="_blank" rel="noreferrer">Facebook</a>
         </nav>
       </div>
       <div class="footer-legal">
