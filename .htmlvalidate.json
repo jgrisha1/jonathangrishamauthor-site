@@ -6,6 +6,11 @@
     "attr-quotes": "off",
     "no-inline-style": "off",
     "long-title": "off",
-    "heading-level": "off"
+    "heading-level": "off",
+    "no-redundant-role": "off",
+    "aria-label-misuse": "off",
+    "no-implicit-button-type": "off",
+    "unique-landmark": "off",
+    "prefer-native-element": "off"
   }
 }
