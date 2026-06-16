@@ -17,6 +17,13 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Validate HTML
+        run: |
+          npx --yes html-validate \
+            --config '{"extends":["html-validate:recommended"],"rules":{"no-trailing-whitespace":"off","void-style":"off","attr-quotes":"off","no-inline-style":"off","long-title":"off","heading-level":"off"}}' \
+            index.html 404.html privacy.html shop.html books/*.html
+          echo "HTML validation passed."
+
       - name: Deploy to Cloudflare Workers
         run: npx wrangler@4 deploy
         env:

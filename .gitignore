@@ -19,3 +19,11 @@ AGENTS.md
 
 # Source horror environment renders (archive only; webp versions are deployed)
 images/ChatGPT*.png
+
+# Linux FUSE temp files
+books/.fuse_hidden*
+
+# Local archive copies (not for deployment)
+Horror/
+Horror_GrishamHorror.zip
+Horror_*.zip

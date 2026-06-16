@@ -236,7 +236,7 @@
                   <div class="book-genre">Extreme Horror / Satire</div>
                   <h3 class="book-title">The Big Orange Monster Fucked Up</h3>
                 </div>
-                <span class="availability-tag" style="background:var(--blood);color:#fff;">Pre-order</span>
+                <span class="availability-tag">Available</span>
               </div>
               <div class="severity-row">
                 <span class="severity-label">Severity</span>
@@ -255,7 +255,7 @@
                 <p>Authoritarian rot made flesh and pushed through every screen in the country. This one does not flinch at what it is describing or who it is describing it about.</p>
               </div>
               <div class="book-actions">
-                <a class="btn btn-blood" href="https://www.amazon.com/dp/B0GX2V65RZ?&linkCode=ll2&tag=220500b-20&linkId=9c6c5071afc3912fe1018d316d2365a6&language=en_US&ref_=as_li_ss_tl" target="_blank" rel="noreferrer">Pre-order &mdash; June 15</a>
+                <a class="btn btn-blood" href="https://www.amazon.com/dp/B0GX2V65RZ?&linkCode=ll2&tag=220500b-20&linkId=9c6c5071afc3912fe1018d316d2365a6&language=en_US&ref_=as_li_ss_tl" target="_blank" rel="noreferrer">Kindle Unlimited</a>
                 <a class="btn btn-ghost" href="/books/the-big-orange-monster-fucked-up">Full Details</a>
                 <a class="btn btn-ghost" href="#signed" data-tab="signed">Signed Copy</a>
               </div>
@@ -436,6 +436,32 @@
               </div>
             </article>
 
+            <!-- WHEN OBEDIENCE BECOMES HARM -->
+            <article class="book-card">
+              <div class="book-cover-wrap">
+                <img src="cover-when-obedience-becomes-harm.jpg" alt="When Obedience Becomes Harm cover" loading="lazy" />
+              </div>
+              <div class="book-card-top">
+                <div>
+                  <div class="book-genre">Non-Fiction / Theological Criticism</div>
+                  <h3 class="book-title">When Obedience Becomes Harm</h3>
+                </div>
+                <span class="availability-tag availability-tag--special">Pre-order</span>
+              </div>
+              <p class="book-desc">
+                An examination of the household theology behind Created to Be His Help Meet and To Train Up a Child. Not a rejection of Scripture. A critique of what happens when Scripture is used to protect authority more carefully than it protects wives and children.
+              </p>
+              <div class="origin-note">
+                <strong>// Series</strong>
+                <p>Harmful Theological Books, Volume 1. Releases June 28, 2026. Kindle edition, 168 pages.</p>
+              </div>
+              <div class="book-actions">
+                <a class="btn btn-blood" href="https://www.amazon.com/dp/B0H3VNGBCD/?tag=220500b-20" target="_blank" rel="noreferrer">Pre-order $4.99</a>
+                <a class="btn btn-ghost" href="/books/when-obedience-becomes-harm">Full Details</a>
+                <a class="btn btn-ghost" href="#signed" data-tab="signed">Signed Copy</a>
+              </div>
+            </article>
+
           </div>
 
           <!-- FAQ and Fair Warning nested in books tab -->
@@ -483,7 +509,7 @@
 
               <div class="bio-block" style="margin-top:1.5rem;">
                 <p>
-                  Jonathan Grisham is an extreme horror and splatterpunk author based in East Tennessee. His fiction has appeared in <em>Terror Tract</em> alongside Edward Lee and Ray Garton, and in <em>Deep Fried Horror: Father's Day Edition</em>. His memoir <em>Growing Up Independent Baptist</em> is a first-person account of religious abuse inside the Independent Fundamental Baptist movement. He has published nine books.
+                  Jonathan Grisham is an extreme horror and splatterpunk author based in East Tennessee. His fiction has appeared in <em>Terror Tract</em> alongside Edward Lee and Ray Garton, and in <em>Deep Fried Horror: Father's Day Edition</em>. His memoir <em>Growing Up Independent Baptist</em> is a first-person account of religious abuse inside the Independent Fundamental Baptist movement. He has published seven books.
                 </p>
                 <p>
                   He is a queer writer, a lay leader in the United Methodist Church, and an active member of New Life UMC in Knoxville. He holds certifications in both Basic and Exceptional Hospitality through the UMC Lay Servant Ministries program.
@@ -666,6 +692,7 @@
                   <option>My Baby</option>
                   <option>The Devil Finds a Home</option>
                   <option>The Big Orange Monster Fucked Up</option>
+                  <option>When Obedience Becomes Harm</option>
                 </select>
               </div>
               <div class="form-group">
@@ -763,7 +790,7 @@
         <span class="broadcast-kicker">Mailing List</span>
         <h2 class="broadcast-title">New Releases &amp; Updates</h2>
         <p class="broadcast-desc">New releases, deleted scenes, and the research behind the books. Straight to your inbox, before it surfaces anywhere else.</p>
-        <span class="broadcast-incentive">Subscribers receive: The Highway of Teeth Prologue / Unpublished</span>
+        <span class="broadcast-incentive">First access to new releases, deleted scenes, and behind-the-scenes notes</span>
         <form id="newsletter-form" novalidate>
           <div class="broadcast-form">
             <input type="email" id="nl-email" name="email" placeholder="Your email address" autocomplete="email" required />
@@ -997,7 +1024,7 @@
           });
           const data = await res.json();
           if (res.ok && data.ok) {
-            statusEl.textContent = "You're on the list. First chapter is on its way.";
+            statusEl.textContent = "You're on the list.";
             statusEl.className = 'form-status form-status-ok';
             emailEl.value = '';
             if (window.turnstile) window.turnstile.reset();
@@ -1018,6 +1045,6 @@
     }
 
   </script>
-  <!-- Cloudflare Web Analytics handled automatically via Workers (Automatic setup) -->
+  <!-- analytics: configure CF_WEB_ANALYTICS_TOKEN in dashboard to enable -->
 </body>
 </html>
