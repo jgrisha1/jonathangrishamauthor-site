@@ -6,6 +6,7 @@ main = "./_worker.js"
 [assets]
 directory = "./"
 binding = "ASSETS"
+not_found_handling = "404-page"
 
 # SECRETS — set in Cloudflare dashboard:
 # Workers & Pages > jonathangrishamauthor > Settings > Variables & Secrets

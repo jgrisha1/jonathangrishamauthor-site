@@ -177,8 +177,19 @@
       nlForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const email = document.getElementById('nl-email').value.trim();
-        if (!email) return;
-        const token = nlForm.querySelector('[name="cf-turnstile-response"]')?.value || '';
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          nlStatus.style.display = 'block';
+          nlStatus.className = 'error';
+          nlStatus.textContent = 'Please enter a valid email address.';
+          return;
+        }
+        const tokenEl = nlForm.querySelector('[name="cf-turnstile-response"]');
+        if (!tokenEl || !tokenEl.value) {
+          nlStatus.style.display = 'block';
+          nlStatus.className = 'error';
+          nlStatus.textContent = 'Please complete the spam check.';
+          return;
+        }
         nlStatus.style.display = 'block';
         nlStatus.className = '';
         nlStatus.textContent = 'Sending...';
@@ -186,16 +197,18 @@
           const res = await fetch('/api/newsletter', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, turnstileToken: token })
+            body: JSON.stringify({ email, 'cf-turnstile-response': tokenEl.value })
           });
           const data = await res.json().catch(() => ({}));
-          if (res.ok) {
+          if (res.ok && data.ok) {
             nlStatus.className = 'success';
-            nlStatus.textContent = data.message || 'You are on the list.';
+            nlStatus.textContent = "You're on the list.";
             nlForm.reset();
+            if (window.turnstile) window.turnstile.reset();
           } else {
             nlStatus.className = 'error';
             nlStatus.textContent = data.error || 'Something went wrong. Try again.';
+            if (window.turnstile) window.turnstile.reset();
           }
         } catch {
           nlStatus.className = 'error';

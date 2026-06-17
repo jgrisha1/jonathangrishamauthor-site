@@ -918,6 +918,13 @@
       });
     });
 
+    // Deep-link from /press: open the Press & Media sub-form on arrival
+    if (sessionStorage.getItem('pressTab') === 'press') {
+      sessionStorage.removeItem('pressTab');
+      const pressBtn = document.querySelector('.form-tab-btn[data-form="press"]');
+      if (pressBtn) pressBtn.click();
+    }
+
     // ---- FORM SUBMISSION ----
     async function submitForm(formEl, endpoint) {
       const statusEl = formEl.querySelector('.form-status');
