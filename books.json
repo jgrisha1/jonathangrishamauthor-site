@@ -66,6 +66,24 @@
       "status": "preorder",
       "releaseDate": "2026-06-28",
       "visualTheme": { "type": "churchPaperTrauma", "intensity": "low", "accentColor": "#b8880a" }
+    },
+    {
+      "asin": "B0H6ZPKPJ3",
+      "slug": "the-christian-home-industry",
+      "title": "The Christian Home Industry",
+      "genre": "Non-Fiction / Theological Criticism",
+      "page": "books/the-christian-home-industry.html",
+      "visualTheme": { "type": "churchPaperTrauma", "intensity": "low", "accentColor": "#b41e19" }
+    },
+    {
+      "asin": "B0H7FJWHV6",
+      "slug": "wardens-of-the-hollow",
+      "title": "Wardens of the Hollow",
+      "genre": "Appalachian Horror / Body Horror",
+      "page": "books/wardens-of-the-hollow.html",
+      "status": "preorder",
+      "releaseDate": "2026-07-15",
+      "visualTheme": { "type": "frostWindow", "intensity": "medium", "accentColor": "#3d6b42" }
     }
   ]
 }
