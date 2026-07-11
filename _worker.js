@@ -217,6 +217,13 @@ export default {
     const origin = request.headers.get('Origin') || '';
     const ip     = request.headers.get('CF-Connecting-IP') || '0.0.0.0';
 
+    // Canonical domain: redirect www → non-www (301)
+    if (url.hostname === 'www.jonathangrishamauthor.com') {
+      const canonical = new URL(request.url);
+      canonical.hostname = 'jonathangrishamauthor.com';
+      return Response.redirect(canonical.toString(), 301);
+    }
+
     if (!url.pathname.startsWith('/api/')) {
       const res = await env.ASSETS.fetch(request);
       const newRes = new Response(res.body, res);
