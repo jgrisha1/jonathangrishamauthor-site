@@ -15,10 +15,10 @@
   --text:        #ddd8cf;
   --bone:        #c4bdb0;
   --muted:       #7e7870;
-  --ash:         #504d48;
+  --ash:         #918b83;
   --blood:       #8b1212;
   --blood-2:     #7a0f0f;
-  --blood-bright:#b52020;
+  --blood-bright:#dc4a4a;
   --blood-dim:   #5c0d0d;
   --rust:        #7a3000;
   --rust-bright: #a44a00;
@@ -41,8 +41,13 @@ body {
 }
 
 a { color: inherit; text-decoration: none; }
-img { max-width: 100%; display: block; }
+img { max-width: 100%; height: auto; display: block; }
 button { cursor: pointer; }
+
+:focus-visible {
+  outline: 2px solid var(--blood-bright);
+  outline-offset: 3px;
+}
 
 /* ---- OVERLAYS ---- */
 /* Grain */
@@ -981,7 +986,7 @@ input::placeholder, textarea::placeholder { color: var(--ash); }
   border-radius: var(--r-lg) var(--r-lg) 0 0;
 }
 
-.warning-card h4 {
+.warning-card h3 {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.1rem;
   font-weight: 600;
@@ -1098,9 +1103,15 @@ input::placeholder, textarea::placeholder { color: var(--ash); }
   font-size: 0.52rem;
   letter-spacing: 0.1em;
   color: var(--ash);
-  opacity: 0.55;
   margin-top: 1rem;
   text-transform: uppercase;
+}
+
+.broadcast-note a,
+.nl-note a {
+  color: var(--blood-bright);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 @media (max-width: 520px) {
@@ -1468,9 +1479,17 @@ input:focus-visible, textarea:focus-visible {
   background: rgba(255,255,255,0.04);
 }
 
+.form-group input:focus-visible,
+.form-group textarea:focus-visible,
+.form-group select:focus-visible {
+  outline: 2px solid var(--blood-bright);
+  outline-offset: 2px;
+  border-color: var(--blood-bright);
+}
+
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-  color: rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.55);
   font-style: italic;
 }
 

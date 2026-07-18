@@ -7,6 +7,25 @@ main = "./_worker.js"
 directory = "./"
 binding = "ASSETS"
 not_found_handling = "404-page"
+# Run the Worker only for page routes. This lets the existing canonical-host
+# redirect execute while images, CSS, fonts, and JavaScript remain asset-first.
+run_worker_first = [
+  "/",
+  "/api/*",
+  "/*.html",
+  "/books",
+  "/books/*",
+  "/articles",
+  "/articles/*",
+  "/about",
+  "/appalachian-horror",
+  "/religious-trauma-books",
+  "/press",
+  "/privacy",
+  "/shop",
+  "/newsletter",
+  "/unsubscribe"
+]
 
 # SECRETS — set in Cloudflare dashboard:
 # Workers & Pages > jonathangrishamauthor > Settings > Variables & Secrets

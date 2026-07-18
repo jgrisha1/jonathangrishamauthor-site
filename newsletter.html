@@ -69,15 +69,20 @@
     .nl-input-row input[type="email"]:focus {
       border-color: var(--blood);
     }
+    .nl-input-row input[type="email"]:focus-visible {
+      border-color: var(--blood-bright);
+      outline: 2px solid var(--blood-bright);
+      outline-offset: 2px;
+    }
     .nl-input-row input[type="email"]::placeholder {
-      color: rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.55);
     }
     .nl-note {
       font-family: 'Special Elite', monospace;
       font-size: 0.56rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.3);
+      color: var(--ash);
       margin-top: 0.4rem;
     }
     #nl-status {
@@ -88,7 +93,7 @@
     #nl-status.success { color: #6dbf7a; }
     #nl-status.error { color: #cf6a6a; }
   </style>
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <script src="/form-security.js" defer></script>
 </head>
 <body>
 
@@ -128,15 +133,15 @@
             <li>Occasional music news from Rust and Redemption</li>
           </ul>
 
-          <form id="newsletter-form" novalidate>
+          <form id="newsletter-form" method="post" action="/api/newsletter" novalidate>
             <div class="nl-form-wrap">
               <div class="nl-input-row">
-                <input type="email" id="nl-email" name="email" placeholder="Your email address" autocomplete="email" required />
+                <input type="email" id="nl-email" name="email" placeholder="Your email address" autocomplete="email" maxlength="254" required />
                 <button type="submit" class="newsletter-btn">Subscribe</button>
               </div>
               <div class="cf-turnstile" data-sitekey="0x4AAAAAADYJfv9sicCQsRk_" data-theme="dark"></div>
               <div id="nl-status" aria-live="polite" style="display:none;"></div>
-              <p class="nl-note">No spam. Unsubscribe any time.</p>
+              <p class="nl-note">No spam. <a href="/unsubscribe">Unsubscribe any time.</a></p>
             </div>
           </form>
 
@@ -183,8 +188,10 @@
           nlStatus.textContent = 'Please enter a valid email address.';
           return;
         }
-        const tokenEl = nlForm.querySelector('[name="cf-turnstile-response"]');
+        let tokenEl = nlForm.querySelector('[name="cf-turnstile-response"]');
         if (!tokenEl || !tokenEl.value) {
+          if (window.JGForms) await window.JGForms.renderForForm(nlForm);
+          tokenEl = nlForm.querySelector('[name="cf-turnstile-response"]');
           nlStatus.style.display = 'block';
           nlStatus.className = 'error';
           nlStatus.textContent = 'Please complete the spam check.';
@@ -204,11 +211,11 @@
             nlStatus.className = 'success';
             nlStatus.textContent = "You're on the list.";
             nlForm.reset();
-            if (window.turnstile) window.turnstile.reset();
+            if (window.JGForms) window.JGForms.resetForForm(nlForm);
           } else {
             nlStatus.className = 'error';
             nlStatus.textContent = data.error || 'Something went wrong. Try again.';
-            if (window.turnstile) window.turnstile.reset();
+            if (window.JGForms) window.JGForms.resetForForm(nlForm);
           }
         } catch {
           nlStatus.className = 'error';

@@ -1,19 +1,26 @@
 # FORMS.md
 
-Three forms POST to the Worker. All are server-validated and spam-protected.
+Five forms POST to the Worker. All are server-validated and spam-protected.
 
 ## Endpoints (_worker.js)
 - POST /api/contact      — name, email, message
 - POST /api/signed-copy  — name, email, book, inscription (opt), address, notes (opt)
 - POST /api/press        — name, email, outlet (opt), inquiry type, details
 
+- POST /api/newsletter: email address; stored in the SUBSCRIBERS KV namespace
+- POST /api/unsubscribe: email address; removed from the SUBSCRIBERS KV namespace
+
 ## Protections in place
+- Newsletter signup stores the normalized email address in the SUBSCRIBERS KV namespace.
+- Unsubscribe removes the normalized email address from the SUBSCRIBERS KV namespace.
 - Cloudflare Turnstile token required and server-verified on every submit.
 - CORS locked to jonathangrishamauthor.com (+ the workers.dev origin).
 - Rate limit: 3 submissions per minute per IP (in-memory per isolate).
 - Input sanitized: angle brackets stripped, trimmed, capped at 2000 chars.
 - Required-field validation server-side; visitor email set as Reply-To.
 - No public email address exposed in the page; everything routes to the Worker.
+- Turnstile is rendered only after a visitor interacts with a form, reducing the initial page load.
+- Every HTML form declares an explicit POST action so personal information cannot fall back to a query string.
 
 ## Email delivery
 Controlled by EMAIL_PROVIDER secret:

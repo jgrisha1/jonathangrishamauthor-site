@@ -1,6 +1,7 @@
 /**
  * jonathangrishamauthor.com -- Cloudflare Worker
- * Handles POST /api/contact, /api/signed-copy, /api/press, /api/newsletter
+ * Handles POST /api/contact, /api/signed-copy, /api/press, /api/newsletter,
+ * and /api/unsubscribe
  *
  * Required env vars (Cloudflare dashboard):
  *   TURNSTILE_SECRET, TO_EMAIL, FROM_EMAIL
@@ -264,8 +265,18 @@ export default {
     if (!checkRateLimit(ip)) return jsonResp({ error: 'Too many requests. Try again in a minute.' }, 429, origin);
 
     let body;
-    try { body = await request.json(); }
-    catch { return jsonResp({ error: 'Invalid request body.' }, 400, origin); }
+    try {
+      const contentType = request.headers.get('Content-Type') || '';
+      if (contentType.includes('application/json')) {
+        body = await request.json();
+      } else if (contentType.includes('application/x-www-form-urlencoded') || contentType.includes('multipart/form-data')) {
+        body = Object.fromEntries(await request.formData());
+      } else {
+        return jsonResp({ error: 'Unsupported request format.' }, 415, origin);
+      }
+    } catch {
+      return jsonResp({ error: 'Invalid request body.' }, 400, origin);
+    }
 
     const token = body['cf-turnstile-response'];
     if (!token) return jsonResp({ error: 'Missing spam protection token.' }, 400, origin);
@@ -318,12 +329,15 @@ export default {
         });
 
       } else if (url.pathname === '/api/newsletter') {
-        const email = sanitize(body.email);
+        const submittedEmail = sanitize(body.email);
+        const email = submittedEmail.toLowerCase();
         if (!email) return jsonResp({ error: 'Email is required.' }, 400, origin);
         if (!isValidEmail(email)) return jsonResp({ error: 'Invalid email address.' }, 400, origin);
 
         // Check for duplicate before storing
-        const existing = env.SUBSCRIBERS ? await env.SUBSCRIBERS.get(email) : null;
+        const existing = env.SUBSCRIBERS
+          ? await env.SUBSCRIBERS.get(email) || (submittedEmail !== email ? await env.SUBSCRIBERS.get(submittedEmail) : null)
+          : null;
         if (existing) {
           // Already subscribed — return ok silently (no double-email)
           return jsonResp({ ok: true }, 200, origin);
@@ -340,6 +354,18 @@ export default {
           html: `<h2 style="font-family:sans-serif;color:#1a1a1a">New mailing list subscriber</h2><p style="font-family:sans-serif;font-size:15px"><strong>${escapeHtml(email)}</strong> signed up at ${escapeHtml(ts)}.</p><p style="font-family:sans-serif;font-size:13px;color:#666">Subscriber saved to KV. Export the full list any time from the Cloudflare dashboard &rsaquo; KV &rsaquo; jonathangrishamauthor-subscribers.</p>`,
           replyTo: email,
         });
+
+      } else if (url.pathname === '/api/unsubscribe') {
+        const submittedEmail = sanitize(body.email);
+        const email = submittedEmail.toLowerCase();
+        if (!email) return jsonResp({ error: 'Email is required.' }, 400, origin);
+        if (!isValidEmail(email)) return jsonResp({ error: 'Invalid email address.' }, 400, origin);
+
+        // Always return the same response so this endpoint does not reveal list membership.
+        if (env.SUBSCRIBERS) {
+          await env.SUBSCRIBERS.delete(email);
+          if (submittedEmail !== email) await env.SUBSCRIBERS.delete(submittedEmail);
+        }
 
       } else {
         return jsonResp({ error: 'Not found.' }, 404, origin);

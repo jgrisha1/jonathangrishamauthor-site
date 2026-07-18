@@ -1,5 +1,13 @@
 _worker.js
 .env
+.env*
+*.bat
+*.log
+deploy-log.txt
+private
+private/**
+what-is-appalachian-splatterpunk.html
+.htmlvalidate.json
 subject_cutout.png
 .git
 .git/**

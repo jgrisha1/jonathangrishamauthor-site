@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="theme-color" content="#090608" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unsubscribe | Jonathan Grisham</title>
+  <meta name="description" content="Remove your email address from the Jonathan Grisham mailing list." />
+  <meta name="robots" content="noindex, follow" />
+  <link rel="canonical" href="https://jonathangrishamauthor.com/unsubscribe" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cinzel:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Special+Elite&display=swap" />
+  <link rel="stylesheet" href="/style.css" />
+  <script src="/form-security.js" defer></script>
+  <style>
+    .unsubscribe-page { min-height: 70vh; display: flex; align-items: center; }
+    .unsubscribe-inner { max-width: 580px; width: 100%; margin: 0 auto; }
+    .unsubscribe-form { display: grid; gap: 1rem; margin-top: 2rem; }
+    .unsubscribe-form label { font-family: 'Special Elite', monospace; font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--bone); }
+    .unsubscribe-form input { width: 100%; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.2); color: var(--text); padding: 0.85rem 1rem; font: 0.8rem 'Special Elite', monospace; }
+    .unsubscribe-form input:focus-visible { border-color: var(--blood-bright); outline: 2px solid var(--blood-bright); outline-offset: 2px; }
+    #unsubscribe-status { min-height: 1.5rem; font-family: 'Cormorant Garamond', serif; font-size: 1rem; }
+    #unsubscribe-status.success { color: #75c982; }
+    #unsubscribe-status.error { color: #e07b7b; }
+  </style>
+</head>
+<body>
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a href="/" style="text-decoration:none;">
+        <div class="brand-wrap">
+          <div class="brand-name">Jonathan Grisham</div>
+          <span class="brand-sub">East Tennessee</span>
+        </div>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="/books">Books</a>
+        <a href="/about">About</a>
+        <a href="/#music">Music</a>
+        <a href="/shop">Shop</a>
+        <a href="/#signed">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section unsubscribe-page">
+      <div class="container">
+        <div class="unsubscribe-inner">
+          <span class="label">Mailing List</span>
+          <hr class="bleeder" />
+          <h1 class="h-section">Unsubscribe</h1>
+          <p class="section-sub">Enter the email address you joined with. It will be removed from the mailing list.</p>
+
+          <form id="unsubscribe-form" class="unsubscribe-form" method="post" action="/api/unsubscribe" novalidate>
+            <div>
+              <label for="unsubscribe-email">Email address</label>
+              <input type="email" id="unsubscribe-email" name="email" autocomplete="email" maxlength="254" required />
+            </div>
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAADYJfv9sicCQsRk_" data-theme="dark"></div>
+            <div>
+              <button type="submit" class="btn btn-blood">Remove My Email</button>
+            </div>
+            <div id="unsubscribe-status" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-legal">
+        <span>&copy; <span id="yr">2026</span> Jonathan Grisham. All rights reserved.</span>
+        <a href="/privacy">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+    const form = document.getElementById('unsubscribe-form');
+    const status = document.getElementById('unsubscribe-status');
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const email = document.getElementById('unsubscribe-email').value.trim();
+      let token = form.querySelector('[name="cf-turnstile-response"]');
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        status.className = 'error';
+        status.textContent = 'Please enter a valid email address.';
+        return;
+      }
+      if (!token || !token.value) {
+        if (window.JGForms) await window.JGForms.renderForForm(form);
+        token = form.querySelector('[name="cf-turnstile-response"]');
+        status.className = 'error';
+        status.textContent = 'Please complete the spam check.';
+        return;
+      }
+
+      const button = form.querySelector('button');
+      button.disabled = true;
+      button.textContent = 'Removing...';
+      status.className = '';
+      status.textContent = '';
+      try {
+        const response = await fetch('/api/unsubscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, 'cf-turnstile-response': token.value }),
+        });
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok || !data.ok) throw new Error(data.error || 'Something went wrong. Try again.');
+        form.reset();
+        if (window.JGForms) window.JGForms.resetForForm(form);
+        status.className = 'success';
+        status.textContent = 'That address has been removed from the mailing list.';
+      } catch (error) {
+        status.className = 'error';
+        status.textContent = error.message || 'Could not connect. Try again in a moment.';
+      } finally {
+        button.disabled = false;
+        button.textContent = 'Remove My Email';
+      }
+    });
+  </script>
+</body>
+</html>

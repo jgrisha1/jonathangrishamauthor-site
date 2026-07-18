@@ -19,8 +19,11 @@ jobs:
 
       - name: Validate HTML
         run: |
-          npx --yes html-validate index.html 404.html privacy.html shop.html books/*.html
+          npx --yes html-validate "*.html" "books/*.html" "articles/*.html"
           echo "HTML validation passed."
+
+      - name: Validate catalog, links, forms, and structured data
+        run: node scripts/validate-site.js
 
       - name: Deploy to Cloudflare Workers
         run: npx wrangler@4 deploy
@@ -33,7 +36,7 @@ jobs:
           sleep 10
           STATUS=$(curl -s -o /dev/null -w "%{http_code}" -A "Mozilla/5.0" https://jonathangrishamauthor.com/)
           echo "Site returned HTTP $STATUS"
-          if [ "$STATUS" = "500" ] || [ "$STATUS" = "000" ]; then
+          if [ "$STATUS" != "200" ]; then
             echo "ERROR: Site returned $STATUS after deploy!"
             exit 1
           fi

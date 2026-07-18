@@ -22,6 +22,12 @@ jobs:
             https://jonathangrishamauthor.com/books/the-big-orange-monster-fucked-up
             https://jonathangrishamauthor.com/books/the-devil-finds-a-home
             https://jonathangrishamauthor.com/books/growing-up-independent-baptist
+            https://jonathangrishamauthor.com/books/when-obedience-becomes-harm
+            https://jonathangrishamauthor.com/books/the-christian-home-industry
+            https://jonathangrishamauthor.com/books/wardens-of-the-hollow
+            https://jonathangrishamauthor.com/books
+            https://jonathangrishamauthor.com/newsletter
+            https://jonathangrishamauthor.com/privacy
           uploadArtifacts: true
           temporaryPublicStorage: true
           runs: 1
