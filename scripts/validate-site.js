@@ -174,7 +174,7 @@ for (const obsolete of ['/books/kept-warm ', '/books/the-devil ', '/books/growin
 }
 
 const assetsIgnore = read('.assetsignore').split(/\r?\n/).map((line) => line.trim());
-for (const pattern of ['.env*', '*.bat', '*.log', 'deploy-log.txt', 'private', 'private/**', 'what-is-appalachian-splatterpunk.html']) {
+for (const pattern of ['.env*', '*.bat', '*.log', 'deploy-log.txt', 'private', 'private/**', '/what-is-appalachian-splatterpunk.html']) {
   if (!assetsIgnore.includes(pattern)) fail(`.assetsignore: missing private-file rule ${pattern}`);
 }
 

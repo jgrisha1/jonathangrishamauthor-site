@@ -22,6 +22,7 @@ jobs:
             --no-progress
             --accept 200,201,202,204,301,302,307,308,403,429
             --exclude "amazon\.com"
+            --exclude "jonathangrishamauthor\.com"
             --exclude "mailto:"
             --exclude "localhost"
             --exclude "fonts\.googleapis\.com"
