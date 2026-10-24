@@ -16,6 +16,7 @@ Thumbs.db
 .codex-*/
 AGENTS.md
 .codex-*.zip
+private/
 
 # Source horror environment renders (archive only; webp versions are deployed)
 images/ChatGPT*.png
