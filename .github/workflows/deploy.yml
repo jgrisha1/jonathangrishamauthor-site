@@ -18,8 +18,11 @@ jobs:
           node-version: '20'
 
       - name: Validate HTML
+        # Pinned and installed into a temp prefix: unpinned `npx --yes html-validate`
+        # crashed npm with "Cannot read properties of null (reading 'edgesOut')".
         run: |
-          npx --yes html-validate "*.html" "books/*.html" "articles/*.html"
+          npm install --prefix "$RUNNER_TEMP/html-validate" --no-audit --no-fund html-validate@11.21.1
+          "$RUNNER_TEMP/html-validate/node_modules/.bin/html-validate" "*.html" "books/*.html" "articles/*.html"
           echo "HTML validation passed."
 
       - name: Validate catalog, links, forms, and structured data
