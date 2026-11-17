@@ -1261,6 +1261,22 @@ footer::before {
   text-transform: uppercase;
 }
 
+.cover-credit {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.54rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ash);
+  margin-top: 1rem;
+  text-align: center;
+}
+.cover-credit a {
+  color: var(--ash);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.cover-credit a:hover { color: var(--text); }
+
 .book-page-title {
   font-family: 'Cinzel', serif;
   font-size: clamp(2.2rem, 4vw, 3.8rem);
