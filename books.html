@@ -337,6 +337,59 @@
     }
     .order-text em { color: var(--ash); font-style: italic; }
     .order-text a { color: var(--blood); text-decoration: underline; text-underline-offset: 3px; }
+    .featured-section {
+      margin-top: 4rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .featured-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .featured-card img {
+      width: 100%;
+      aspect-ratio: 2/3;
+      object-fit: cover;
+      border-radius: 3px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .featured-card-body {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+    .featured-card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+    }
+    .featured-card-meta {
+      font-family: 'Special Elite', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ash);
+    }
+    .featured-card-link {
+      display: inline-block;
+      margin-top: 0.4rem;
+      font-family: 'Special Elite', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blood);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
   </style>
 </head>
 <body>
@@ -714,6 +767,56 @@
             </div>
           </article>
 
+        </div>
+
+        <!-- Featured in -->
+        <div class="featured-section">
+          <span class="label">Anthology Appearances</span>
+          <hr class="bleeder" />
+          <h2 class="h-section">Featured In</h2>
+          <div class="featured-grid">
+
+            <div class="featured-card">
+              <img src="cover-terror-tract.jpg" alt="Terror Tract: E-zine October 2019 cover" loading="lazy" />
+              <div class="featured-card-body">
+                <div class="featured-card-title">Terror Tract: E-zine</div>
+                <div class="featured-card-meta">October 2019 &bull; Horror Fiction</div>
+                <div class="featured-card-meta">With Ray Garton &amp; Edward Lee</div>
+                <a class="featured-card-link" href="https://www.amazon.com/dp/169413024X/?tag=220500b-20" target="_blank" rel="noreferrer">Get It on Amazon</a>
+              </div>
+            </div>
+
+            <div class="featured-card">
+              <img src="cover-deep-fried-horror.jpg" alt="Deep Fried Horror Father's Day Edition cover" loading="lazy" />
+              <div class="featured-card-body">
+                <div class="featured-card-title">Deep Fried Horror: Father&rsquo;s Day Edition</div>
+                <div class="featured-card-meta">June 2019 &bull; Horror Fiction</div>
+                <div class="featured-card-meta">Ed. John Palisano</div>
+                <a class="featured-card-link" href="https://www.amazon.com/dp/1072824191/?tag=220500b-20" target="_blank" rel="noreferrer">Get It on Amazon</a>
+              </div>
+            </div>
+
+            <div class="featured-card">
+              <img src="cover-hoarded-memories.jpg" alt="Hoarded Memories: A Hoarding Horror Anthology cover" loading="lazy" />
+              <div class="featured-card-body">
+                <div class="featured-card-title">Hoarded Memories</div>
+                <div class="featured-card-meta">October 2026 &bull; Horror Fiction</div>
+                <div class="featured-card-meta">A Hoarding Horror Anthology</div>
+                <a class="featured-card-link" href="https://www.amazon.com/dp/B0HMH1J8LJ/?tag=220500b-20" target="_blank" rel="noreferrer">Get It on Amazon</a>
+              </div>
+            </div>
+
+            <div class="featured-card">
+              <img src="cover-lustful-terrors-2.jpg" alt="Lustful Terrors Vol. 2 cover" loading="lazy" />
+              <div class="featured-card-body">
+                <div class="featured-card-title">Lustful Terrors Vol. 2</div>
+                <div class="featured-card-meta">October 2026 &bull; Horror Fiction</div>
+                <div class="featured-card-meta">JBlaze Anthologies</div>
+                <a class="featured-card-link" href="https://www.amazon.com/dp/B0HHPSX9KS/?tag=220500b-20" target="_blank" rel="noreferrer">Get It on Amazon</a>
+              </div>
+            </div>
+
+          </div>
         </div>
 
         <!-- Reading order -->
